@@ -1,0 +1,1790 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理系统 - CHEERFUL Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <!-- 加载动画遮罩 -->
+    <div class="loading-overlay" id="loadingOverlay"></div>
+    
+    <!-- 加载动画 -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <div class="loading-text" id="loadingText">加载中...</div>
+    </div>
+
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            CHEERFUL <span>Admin</span>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" data-page="dashboard" class="menu-link active"><i class="fas fa-tachometer-alt"></i> 仪表盘</a></li>
+            <li><a href="#" data-page="products" class="menu-link"><i class="fas fa-box"></i> 产品管理</a></li>
+            <li><a href="#" data-page="categories" class="menu-link"><i class="fas fa-list"></i> 分类管理</a></li>
+            <li><a href="#" data-page="contacts" class="menu-link"><i class="fas fa-envelope"></i> 联系消息</a></li>
+            <li><a href="#" data-page="team-members" class="menu-link"><i class="fas fa-users"></i> 团队成员</a></li>
+            <li><a href="#" data-page="company-info" class="menu-link"><i class="fas fa-building"></i> 公司信息</a></li>
+        </ul>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="main-content">
+        <!-- 通用消息提示 -->
+        <div id="message" class="message"></div>
+
+        <!-- 仪表盘页面 -->
+        <div id="dashboard" class="page active">
+            <div class="header">
+                <h2>仪表盘</h2>
+                <div class="user-profile">
+                    <span id="userName">管理员</span>
+                    <button class="btn-logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> 退出登录</button>
+                </div>
+            </div>
+
+            <div class="stats-cards">
+                <div class="stat-card">
+                    <h4>总产品数</h4>
+                    <div class="stat-value" id="totalProducts">0</div>
+                </div>
+                <div class="stat-card">
+                    <h4>总分类数</h4>
+                    <div class="stat-value" id="totalCategories">0</div>
+                </div>
+                <div class="stat-card">
+                    <h4>联系消息</h4>
+                    <div class="stat-value" id="totalContacts">0</div>
+                </div>
+                <div class="stat-card">
+                    <h4>团队成员</h4>
+                    <div class="stat-value" id="teamMembers">0</div>
+                </div>
+                <div class="stat-card">
+                    <h4>未读消息</h4>
+                    <div class="stat-value" id="unreadContacts">0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 产品管理页面 -->
+        <div id="products" class="page">
+            <div class="header">
+                <h2>产品管理</h2>
+                <div class="user-profile">
+                    <span id="userName2">管理员</span>
+                    <button class="btn-logout"><i class="fas fa-sign-out-alt"></i> 退出登录</button>
+                </div>
+            </div>
+
+            <button class="btn-add" id="addProductBtn"><i class="fas fa-plus"></i> 添加新产品</button>
+
+            <div class="table-container">
+                <div id="productsTable"></div>
+            </div>
+        </div>
+
+        <!-- 分类管理页面 -->
+        <div id="categories" class="page">
+            <div class="header">
+                <h2>分类管理</h2>
+                <div class="user-profile">
+                    <span id="userName3">管理员</span>
+                    <button class="btn-logout"><i class="fas fa-sign-out-alt"></i> 退出登录</button>
+                </div>
+            </div>
+
+            <button class="btn-add" id="addCategoryBtn"><i class="fas fa-plus"></i> 添加新分类</button>
+
+            <div class="table-container">
+                <div id="categoriesTable"></div>
+            </div>
+        </div>
+
+        <!-- 联系消息管理页面 -->
+        <div id="contacts" class="page">
+            <div class="header">
+                <h2>联系消息</h2>
+                <div class="user-profile">
+                    <span id="userName5">管理员</span>
+                    <button class="btn-logout"><i class="fas fa-sign-out-alt"></i> 退出登录</button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <div id="contactsTable"></div>
+            </div>
+        </div>
+
+        <!-- 团队成员管理页面 -->
+        <div id="team-members" class="page">
+            <div class="header">
+                <h2>团队成员</h2>
+                <div class="user-profile">
+                    <span id="userName6">管理员</span>
+                    <button class="btn-logout"><i class="fas fa-sign-out-alt"></i> 退出登录</button>
+                </div>
+            </div>
+
+            <button class="btn-add" id="addTeamMemberBtn"><i class="fas fa-plus"></i> 添加新成员</button>
+
+            <div class="table-container">
+                <div id="teamMembersTable"></div>
+            </div>
+        </div>
+
+        <!-- 公司信息管理页面 -->
+        <div id="company-info" class="page">
+            <div class="header">
+                <h2>公司信息</h2>
+                <div class="user-profile">
+                    <span id="userName7">管理员</span>
+                    <button class="btn-logout"><i class="fas fa-sign-out-alt"></i> 退出登录</button>
+                </div>
+            </div>
+
+            <div class="table-container" style="padding: 2rem;">
+                <form id="companyInfoForm">
+                    <div class="form-group">
+                        <label class="form-label">公司介绍 - 英文 (第一段)</label>
+                        <textarea class="form-control" id="desc1En" rows="3" style="min-height: 100px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">公司介绍 - 英文 (第二段)</label>
+                        <textarea class="form-control" id="desc2En" rows="3" style="min-height: 100px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">公司介绍 - 斯瓦希里语 (第一段)</label>
+                        <textarea class="form-control" id="desc1Sw" rows="3" style="min-height: 100px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">公司介绍 - 斯瓦希里语 (第二段)</label>
+                        <textarea class="form-control" id="desc2Sw" rows="3" style="min-height: 100px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">公司介绍 - 中文 (第一段)</label>
+                        <textarea class="form-control" id="desc1Zh" rows="3" style="min-height: 100px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">公司介绍 - 中文 (第二段)</label>
+                        <textarea class="form-control" id="desc2Zh" rows="3" style="min-height: 100px;"></textarea>
+                    </div>
+                    <button type="submit" class="btn-save"><i class="fas fa-save"></i> 保存</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 产品模态框 -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="productModalTitle">添加新产品</h3>
+                <span class="close-modal" data-modal="productModal">&times;</span>
+            </div>
+            <form id="productForm">
+                <div class="form-group">
+                    <label class="form-label">产品图片（可多选）</label>
+                    <input type="file" class="form-control" id="productImage" accept="image/*" multiple name="">
+                    <small style="color: #888; display: block; margin-top: 4px;">支持选择多张图片（最多40张），产品详情页会轮播展示</small>
+                    <div id="imagePreview" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;"></div>
+                    <div id="existingImages" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">产品名称（中文）</label>
+                    <input type="text" class="form-control" id="productName" required placeholder="输入产品中文名称">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">产品名称（英文）</label>
+                    <input type="text" class="form-control" id="productEnName" required placeholder="输入产品英文名称">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">产品名称（斯瓦希里语）</label>
+                    <input type="text" class="form-control" id="productSwName" required placeholder="输入产品斯瓦希里语名称">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">产品分类</label>
+                    <select class="form-control" id="productCategory" required></select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">产品价格（美元）</label>
+                    <input type="number" class="form-control" id="productPrice" placeholder="输入产品价格" min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">产品描述（中文）</label>
+                    <textarea class="form-control" id="productDesc" rows="3" placeholder="输入产品中文描述"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">产品描述（英文）</label>
+                    <textarea class="form-control" id="productEnDesc" rows="3" placeholder="输入产品英文描述"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">产品描述（斯瓦希里语）</label>
+                    <textarea class="form-control" id="productSwDesc" rows="3" placeholder="输入产品斯瓦希里语描述"></textarea>
+                </div>
+
+                <!-- 图文介绍区块 -->
+                <div style="border-top: 2px dashed #c6a43f; margin: 1.5rem 0; padding-top: 1.5rem;">
+                    <h4 style="color: #1e3a5f; margin-bottom: 1rem; font-size: 1rem;">图文介绍（产品详情展示）</h4>
+
+                    <div class="form-group">
+                        <label class="form-label">介绍图片（可多选）</label>
+                        <input type="file" class="form-control" id="productIntroImages" accept="image/*" multiple name="">
+                        <small style="color: #888; display: block; margin-top: 4px;">支持选择多张图片（最多40张），图片将在产品详情页垂直拼接显示（类似淘宝详情页）</small>
+                        <div id="introImagesPreview" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;"></div>
+                        <div id="existingIntroImages" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">介绍文字（中文）</label>
+                        <textarea class="form-control" id="productIntroText" rows="4" placeholder="输入中文图文介绍内容"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">介绍文字（英文）</label>
+                        <textarea class="form-control" id="productIntroTextEn" rows="4" placeholder="Enter product introduction in English"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">介绍文字（斯瓦希里语）</label>
+                        <textarea class="form-control" id="productIntroTextSw" rows="4" placeholder="Ingiza utangulizi wa bidhaa kwa Kiswahili"></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-save">保存产品</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 分类模态框 -->
+    <div class="modal" id="categoryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="categoryModalTitle">添加新分类</h3>
+                <span class="close-modal" data-modal="categoryModal">&times;</span>
+            </div>
+            <form id="categoryForm">
+                <div class="form-group">
+                    <label class="form-label">分类名称（中文）</label>
+                    <input type="text" class="form-control" id="categoryName" required placeholder="输入分类中文名称">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">分类名称（英文）</label>
+                    <input type="text" class="form-control" id="categoryEnName" required placeholder="输入分类英文名称">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">分类名称（斯瓦希里语）</label>
+                    <input type="text" class="form-control" id="categorySwName" required placeholder="输入分类斯瓦希里语名称">
+                </div>
+
+                <button type="submit" class="btn-save">保存分类</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 团队成员模态框 -->
+    <div class="modal" id="teamMemberModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="teamMemberModalTitle">添加新成员</h3>
+                <span class="close-modal" data-modal="teamMemberModal">&times;</span>
+            </div>
+            <form id="teamMemberForm">
+                <div class="form-group">
+                    <label class="form-label">成员照片</label>
+                    <input type="file" class="form-control" id="teamMemberImage" accept="image/*">
+                    <div class="img-preview" id="teamMemberImgPreview"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">成员名称（中文）</label>
+                    <input type="text" class="form-control" id="memberName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">成员名称（英文）</label>
+                    <input type="text" class="form-control" id="memberEnName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">成员名称（斯瓦希里语）</label>
+                    <input type="text" class="form-control" id="memberSwName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">职位（中文）</label>
+                    <input type="text" class="form-control" id="memberRole" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">职位（英文）</label>
+                    <input type="text" class="form-control" id="memberEnRole" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">职位（斯瓦希里语）</label>
+                    <input type="text" class="form-control" id="memberSwRole" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">介绍（中文）</label>
+                    <textarea class="form-control" id="memberDesc" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">介绍（英文）</label>
+                    <textarea class="form-control" id="memberEnDesc" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">介绍（斯瓦希里语）</label>
+                    <textarea class="form-control" id="memberSwDesc" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn-save">保存成员</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 联系消息详情模态框 -->
+    <div class="modal" id="contactDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>联系消息详情</h3>
+                <span class="close-modal" data-modal="contactDetailModal">&times;</span>
+            </div>
+            <div id="contactDetail" style="padding: 1rem 0;">
+                <!-- 动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== API 配置 ====================
+        const API_BASE_URL = 'https://cheerful.vsharev.com/api';
+        
+        // 获取token的方法
+        function getToken() {
+            return localStorage.getItem('adminToken');
+        }
+
+        // 统一的API调用函数
+        async function apiCall(endpoint, options = {}) {
+            const url = `${API_BASE_URL}${endpoint}`;
+            
+            // 检查是否是 FormData（文件上传）
+            const isFormData = options.body instanceof FormData;
+            
+            // 如果不是 FormData，设置 JSON 头；如果是 FormData，让浏览器自动设置 multipart/form-data
+            const headers = isFormData ? {} : { 'Content-Type': 'application/json' };
+            
+            // 合并自定义头
+            Object.assign(headers, options.headers);
+
+            if (getToken()) {
+                headers['Authorization'] = `Bearer ${getToken()}`;
+            }
+
+            try {
+                const response = await fetch(url, {
+                    ...options,
+                    headers
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.message || `API Error: ${response.status}`);
+                }
+
+                return data;
+            } catch (error) {
+                console.error('API 调用失败:', error);
+                throw error;
+            }
+        }
+
+        // ==================== 数据管理 ====================
+        class DataManager {
+            static async getStats() {
+                return apiCall('/stats');
+            }
+
+            static async getAllProducts() {
+                return apiCall('/products');
+            }
+
+            static async getProduct(id) {
+                return apiCall(`/products/${id}`);
+            }
+
+            static async createProduct(data, imageFiles = [], introFiles = []) {
+                const formData = new FormData();
+                formData.append('name', data.name);
+                formData.append('enName', data.enName);
+                formData.append('swName', data.swName);
+                formData.append('categoryId', data.categoryId);
+                formData.append('price', data.price);
+                formData.append('desc', data.desc);
+                formData.append('enDesc', data.enDesc);
+                formData.append('swDesc', data.swDesc);
+                formData.append('introText', data.introText || '');
+                formData.append('introTextEn', data.introTextEn || '');
+                formData.append('introTextSw', data.introTextSw || '');
+                imageFiles.forEach(f => formData.append('images', f));
+                introFiles.forEach(f => formData.append('introImages', f));
+
+                return apiCall('/products', {
+                    method: 'POST',
+                    headers: {},
+                    body: formData
+                });
+            }
+
+            static async updateProduct(id, data, imageFiles = [], existingImageUrls = [], introFiles = [], existingIntroUrls = []) {
+                const formData = new FormData();
+                formData.append('name', data.name);
+                formData.append('enName', data.enName);
+                formData.append('swName', data.swName);
+                formData.append('categoryId', data.categoryId);
+                formData.append('price', data.price);
+                formData.append('desc', data.desc);
+                formData.append('enDesc', data.enDesc);
+                formData.append('swDesc', data.swDesc);
+                formData.append('introText', data.introText || '');
+                formData.append('introTextEn', data.introTextEn || '');
+                formData.append('introTextSw', data.introTextSw || '');
+                // 发送现有图片的URL数组（按新顺序）
+                formData.append('existingImages', JSON.stringify(existingImageUrls));
+                formData.append('existingIntroImages', JSON.stringify(existingIntroUrls));
+                // 添加新上传的文件
+                imageFiles.forEach(f => formData.append('images', f));
+                introFiles.forEach(f => formData.append('introImages', f));
+
+                return apiCall(`/products/${id}`, {
+                    method: 'PUT',
+                    headers: {},
+                    body: formData
+                });
+            }
+
+            static async deleteProduct(id) {
+                return apiCall(`/products/${id}`, { method: 'DELETE' });
+            }
+
+            static async getAllCategories() {
+                return apiCall('/categories');
+            }
+
+            static async getCategory(id) {
+                return apiCall(`/categories/${id}`);
+            }
+
+            static async createCategory(data) {
+                return apiCall('/categories', {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                });
+            }
+
+            static async updateCategory(id, data) {
+                return apiCall(`/categories/${id}`, {
+                    method: 'PUT',
+                    body: JSON.stringify(data)
+                });
+            }
+
+            static async deleteCategory(id) {
+                return apiCall(`/categories/${id}`, { method: 'DELETE' });
+            }
+
+            // ==================== 团队成员API ====================
+            static async getTeamMembers() {
+                return apiCall('/team-members');
+            }
+
+            static async getTeamMember(id) {
+                return apiCall(`/team-members/${id}`);
+            }
+
+            static async createTeamMember(formData) {
+                return apiCall('/team-members', {
+                    method: 'POST',
+                    body: formData
+                });
+            }
+
+            static async updateTeamMember(id, formData) {
+                return apiCall(`/team-members/${id}`, {
+                    method: 'PUT',
+                    body: formData
+                });
+            }
+
+            static async deleteTeamMember(id) {
+                return apiCall(`/team-members/${id}`, { method: 'DELETE' });
+            }
+
+            // ==================== 联系消息API ====================
+            static async getContacts() {
+                return apiCall('/contacts');
+            }
+
+            static async getContact(id) {
+                return apiCall(`/contacts/${id}`);
+            }
+
+            static async createContact(data) {
+                return apiCall('/contacts', {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                });
+            }
+
+            static async updateContact(id, data) {
+                return apiCall(`/contacts/${id}`, {
+                    method: 'PUT',
+                    body: JSON.stringify(data)
+                });
+            }
+
+            static async deleteContact(id) {
+                return apiCall(`/contacts/${id}`, { method: 'DELETE' });
+            }
+
+            // ==================== 公司信息API ====================
+            static async getCompanyInfo() {
+                return apiCall('/company-info');
+            }
+
+            static async updateCompanyInfo(data) {
+                return apiCall('/company-info', {
+                    method: 'PUT',
+                    body: JSON.stringify(data)
+                });
+            }
+        }
+
+        // ==================== 配置和工具函数 ====================
+        let currentEditingProductId = null;
+        let currentEditingCategoryId = null;
+        let allProducts = [];
+        let allCategories = [];
+        let scrollPosition = 0;
+
+        // 显示加载动画
+        function showLoading(text = '加载中...') {
+            document.getElementById('loadingText').textContent = text;
+            document.getElementById('loadingOverlay').classList.add('show');
+            document.getElementById('loadingSpinner').classList.add('show');
+        }
+
+        // 隐藏加载动画
+        function hideLoading() {
+            document.getElementById('loadingOverlay').classList.remove('show');
+            document.getElementById('loadingSpinner').classList.remove('show');
+        }
+
+        // 保存滚动位置
+        function saveScrollPosition() {
+            const mainContent = document.querySelector('.main-content');
+            scrollPosition = mainContent.scrollTop;
+        }
+
+        // 恢复滚动位置（带平滑效果）
+        function restoreScrollPosition() {
+            const mainContent = document.querySelector('.main-content');
+            mainContent.scrollTo({
+                top: scrollPosition,
+                behavior: 'smooth'
+            });
+        }
+
+        // 带淡出效果的更新内容
+        function updateContentWithFade(container, newContent) {
+            container.classList.add('fade-out');
+            setTimeout(() => {
+                container.innerHTML = newContent;
+                container.classList.remove('fade-out');
+                container.classList.add('fade-in');
+                setTimeout(() => {
+                    container.classList.remove('fade-in');
+                }, 300);
+            }, 300);
+        }
+
+        // 显示消息
+        function showMessage(text, type = 'success', duration = 3000) {
+            const msgEl = document.getElementById('message');
+            msgEl.textContent = text;
+            msgEl.className = `message show ${type}`;
+            if (duration > 0) {
+                setTimeout(() => {
+                    msgEl.className = 'message';
+                }, duration);
+            }
+        }
+
+        // 关闭模态框
+        document.querySelectorAll('.close-modal').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const modalId = this.dataset.modal;
+                document.getElementById(modalId).classList.remove('show');
+            });
+        });
+
+        // 点击外部关闭模态框
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('show');
+            }
+        });
+
+        // ==================== 认证 ====================
+
+        // 检查登录状态
+        function checkAuth() {
+            if (!localStorage.getItem('adminToken')) {
+                window.location.href = 'login.html';
+                return false;
+            }
+            return true;
+        }
+
+        // 退出登录
+        document.querySelectorAll('.btn-logout').forEach(btn => {
+            btn.addEventListener('click', () => {
+                localStorage.removeItem('adminToken');
+                localStorage.removeItem('adminUser');
+                window.location.href = 'login.html';
+            });
+        });
+
+        // 显示用户名
+        function displayUserName() {
+            const user = JSON.parse(localStorage.getItem('adminUser') || '{}');
+            const userName = user.name || '管理员';
+            document.querySelectorAll('[id^="userName"]').forEach(el => {
+                el.textContent = userName;
+            });
+        }
+
+        // ==================== 页面导航 ====================
+
+        document.querySelectorAll('.menu-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.dataset.page;
+
+                // 更新菜单状态
+                document.querySelectorAll('.menu-link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                // 隐藏所有页面
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+                // 显示当前页面
+                document.getElementById(page).classList.add('active');
+
+                // 加载数据
+                if (page === 'dashboard') {
+                    loadStats();
+                } else if (page === 'products') {
+                    loadProducts();
+                } else if (page === 'categories') {
+                    loadCategories();
+                }
+            });
+        });
+
+        // ==================== 仪表盘 ====================
+
+        async function loadStats() {
+            try {
+                showLoading('加载统计数据...');
+                const response = await DataManager.getStats();
+
+                if (response.success) {
+                    document.getElementById('totalProducts').textContent = response.data.totalProducts;
+                    document.getElementById('totalCategories').textContent = response.data.totalCategories;
+                    
+                    // 新增统计卡片
+                    if (document.getElementById('totalContacts')) {
+                        document.getElementById('totalContacts').textContent = response.data.totalContacts || 0;
+                    }
+                    if (document.getElementById('teamMembers')) {
+                        document.getElementById('teamMembers').textContent = response.data.teamMembers || 0;
+                    }
+                    if (document.getElementById('unreadContacts')) {
+                        document.getElementById('unreadContacts').textContent = response.data.unreadContacts || 0;
+                    }
+                }
+                hideLoading();
+            } catch (error) {
+                hideLoading();
+                console.error('加载统计数据失败:', error);
+                showMessage('加载统计数据失败: ' + error.message, 'error');
+            }
+        }
+
+        // ==================== 产品管理 ====================
+
+        async function loadProducts() {
+            try {
+                showLoading('加载产品列表...');
+                saveScrollPosition();
+                const response = await DataManager.getAllProducts();
+
+                if (response.success) {
+                    allProducts = response.data;
+                    
+                    // 加载分类以便显示分类名称
+                    if (allCategories.length === 0) {
+                        await loadCategoriesData();
+                    }
+                    
+                    renderProductsTable();
+                    hideLoading();
+                    restoreScrollPosition();
+                }
+            } catch (error) {
+                hideLoading();
+                console.error('加载产品列表失败:', error);
+                showMessage('加载产品列表失败: ' + error.message, 'error');
+            }
+        }
+
+        async function loadCategoriesData() {
+            try {
+                const response = await DataManager.getAllCategories();
+
+                if (response.success) {
+                    allCategories = response.data;
+                    updateProductCategorySelect();
+                }
+            } catch (error) {
+                console.error('加载分类失败:', error);
+                showMessage('加载分类失败: ' + error.message, 'error');
+            }
+        }
+
+        function renderProductsTable() {
+            const container = document.getElementById('productsTable');
+
+            if (allProducts.length === 0) {
+                const emptyHtml = `
+                    <div class="empty-state">
+                        <i class="fas fa-box-open"></i>
+                        <h4>暂无产品数据</h4>
+                        <p>点击"添加新产品"按钮创建第一个产品</p>
+                    </div>
+                `;
+                updateContentWithFade(container, emptyHtml);
+                return;
+            }
+
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>图片</th>
+                            <th>产品名称</th>
+                            <th>分类</th>
+                            <th>价格</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            allProducts.forEach(product => {
+                const category = allCategories.find(c => c.id === product.categoryId) || { name: '未知' };
+                html += `
+                    <tr>
+                        <td><img src="${product.imageUrl}" alt="${product.name}" class="product-img" onerror="this.src='/uploads/placeholder.png'"></td>
+                        <td><small>${product.name} / ${product.enName} / ${product.swName || 'N/A'}</small></td>
+                        <td>${category.name}</td>
+                        <td>${typeof product.price === 'number' && !Number.isNaN(product.price) ? `$${product.price.toFixed(2)}` : '-'}</td>
+                        <td>
+                            <button class="btn-edit" onclick="editProduct('${product.id}')"><i class="fas fa-edit"></i> 编辑</button>
+                            <button class="btn-delete" onclick="deleteProduct('${product.id}')"><i class="fas fa-trash"></i> 删除</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            updateContentWithFade(container, html);
+        }
+
+        function updateProductCategorySelect() {
+            const select = document.getElementById('productCategory');
+            select.innerHTML = '';
+            
+            allCategories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.id;
+                option.textContent = category.name;
+                select.appendChild(option);
+            });
+        }
+
+        document.getElementById('addProductBtn').addEventListener('click', () => {
+            currentEditingProductId = null;
+            productImagesList = [];
+            productIntroImagesList = [];
+            document.getElementById('productForm').reset();
+            document.getElementById('imagePreview').innerHTML = '';
+            document.getElementById('existingImages').innerHTML = '';
+            document.getElementById('productModalTitle').textContent = '添加新产品';
+            document.getElementById('introImagesPreview').innerHTML = '';
+            document.getElementById('existingIntroImages').innerHTML = '';
+            document.getElementById('productModal').classList.add('show');
+        });
+
+        document.getElementById('productImage').addEventListener('change', function(e) {
+            const newFiles = Array.from(e.target.files);
+            const willExceedLimit = productImagesList.length + newFiles.length > 40;
+            
+            if (willExceedLimit) {
+                const allowed = 40 - productImagesList.length;
+                if (allowed <= 0) {
+                    showMessage('产品主图已达到最大数量（40张），请先删除一些图片再添加', 'error');
+                    e.target.value = '';
+                    return;
+                }
+                showMessage(`只能再添加 ${allowed} 张图片，已自动限制`, 'warning');
+                newFiles.splice(allowed); // 只保留允许的数量
+            }
+            
+            newFiles.forEach(file => {
+                const itemObj = { type: 'new', file: file, dataUrl: null };
+                productImagesList.push(itemObj);
+                const reader = new FileReader();
+                reader.onload = ev => {
+                    if (itemObj) {
+                        itemObj.dataUrl = ev.target.result;
+                        renderProductImagesPreview();
+                    }
+                };
+                reader.readAsDataURL(file);
+            });
+            e.target.value = ''; // 清空input，允许重复选择同名文件
+        });
+
+        function renderProductImagesPreview() {
+            const container = document.getElementById('existingImages');
+            container.innerHTML = '';
+            
+            if (productImagesList.length === 0) return;
+            
+            const label = document.createElement('div');
+            label.style.cssText = 'width:100%; font-size:0.85rem; color:#666; margin-bottom:4px;';
+            label.textContent = '产品图片（拖拽排序）:';
+            container.appendChild(label);
+            
+            productImagesList.forEach((item, index) => {
+                if (!item) return; // 防御性检查
+                
+                const wrapper = document.createElement('div');
+                wrapper.style.cssText = 'position:relative; width:80px; display:inline-block; margin:4px;';
+                wrapper.draggable = true;
+                wrapper.dataset.index = index;
+                
+                const img = document.createElement('img');
+                const imgSrc = item.dataUrl || item.url || '';
+                if (!imgSrc) return; // 如果没有图片源，跳过
+                img.src = imgSrc;
+                img.style.cssText = 'width:80px;height:80px;object-fit:cover;border-radius:4px;border:2px solid #ddd; display:block;';
+                wrapper.appendChild(img);
+                
+                // 序号标签
+                const orderLabel = document.createElement('div');
+                orderLabel.style.cssText = 'position:absolute; top:2px; left:2px; background:rgba(0,0,0,0.7); color:white; padding:2px 6px; border-radius:3px; font-size:12px;';
+                orderLabel.textContent = index + 1;
+                wrapper.appendChild(orderLabel);
+                
+                // 控制按钮组
+                const controls = document.createElement('div');
+                controls.style.cssText = 'position:absolute; bottom:2px; left:2px; right:2px; display:flex; gap:2px;';
+                
+                // 上移按钮
+                if (index > 0) {
+                    const upBtn = document.createElement('button');
+                    upBtn.type = 'button';
+                    upBtn.innerHTML = '↑';
+                    upBtn.style.cssText = 'flex:1; padding:2px; background:rgba(255,255,255,0.9); border:1px solid #ddd; border-radius:3px; cursor:pointer; font-weight:bold;';
+                    upBtn.onclick = () => moveProductImage(index, index - 1);
+                    controls.appendChild(upBtn);
+                }
+                
+                // 下移按钮
+                if (index < productImagesList.length - 1) {
+                    const downBtn = document.createElement('button');
+                    downBtn.type = 'button';
+                    downBtn.innerHTML = '↓';
+                    downBtn.style.cssText = 'flex:1; padding:2px; background:rgba(255,255,255,0.9); border:1px solid #ddd; border-radius:3px; cursor:pointer; font-weight:bold;';
+                    downBtn.onclick = () => moveProductImage(index, index + 1);
+                    controls.appendChild(downBtn);
+                }
+                
+                // 删除按钮
+                const delBtn = document.createElement('button');
+                delBtn.type = 'button';
+                delBtn.innerHTML = '×';
+                delBtn.style.cssText = 'flex:1; padding:2px; background:rgba(255,0,0,0.8); color:white; border:1px solid #c00; border-radius:3px; cursor:pointer; font-weight:bold;';
+                delBtn.onclick = () => removeProductImage(index);
+                controls.appendChild(delBtn);
+                
+                wrapper.appendChild(controls);
+                
+                // 拖拽事件
+                wrapper.addEventListener('dragstart', e => {
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('text/plain', index);
+                    wrapper.style.opacity = '0.5';
+                });
+                
+                wrapper.addEventListener('dragend', e => {
+                    wrapper.style.opacity = '1';
+                });
+                
+                wrapper.addEventListener('dragover', e => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    wrapper.style.borderColor = '#007bff';
+                });
+                
+                wrapper.addEventListener('dragleave', e => {
+                    wrapper.style.borderColor = '';
+                });
+                
+                wrapper.addEventListener('drop', e => {
+                    e.preventDefault();
+                    const fromIndex = parseInt(e.dataTransfer.getData('text/plain'));
+                    const toIndex = index;
+                    moveProductImage(fromIndex, toIndex);
+                    wrapper.style.borderColor = '';
+                });
+                
+                container.appendChild(wrapper);
+            });
+        }
+        
+        function moveProductImage(fromIndex, toIndex) {
+            const item = productImagesList.splice(fromIndex, 1)[0];
+            productImagesList.splice(toIndex, 0, item);
+            renderProductImagesPreview();
+        }
+        
+        function removeProductImage(index) {
+            if (confirm('确定要删除这张图片吗？')) {
+                productImagesList.splice(index, 1);
+                renderProductImagesPreview();
+            }
+        }
+
+        // 图文介绍图片预览
+        document.getElementById('productIntroImages').addEventListener('change', function(e) {
+            const newFiles = Array.from(e.target.files);
+            const willExceedLimit = productIntroImagesList.length + newFiles.length > 40;
+            
+            if (willExceedLimit) {
+                const allowed = 40 - productIntroImagesList.length;
+                if (allowed <= 0) {
+                    showMessage('介绍图片已达到最大数量（40张），请先删除一些图片再添加', 'error');
+                    e.target.value = '';
+                    return;
+                }
+                showMessage(`只能再添加 ${allowed} 张介绍图片，已自动限制`, 'warning');
+                newFiles.splice(allowed);
+            }
+            
+            newFiles.forEach(file => {
+                const itemObj = { type: 'new', file: file, dataUrl: null };
+                productIntroImagesList.push(itemObj);
+                const reader = new FileReader();
+                reader.onload = ev => {
+                    if (itemObj) {
+                        itemObj.dataUrl = ev.target.result;
+                        renderIntroImagesPreview();
+                    }
+                };
+                reader.readAsDataURL(file);
+            });
+            e.target.value = '';
+        });
+        
+        function renderIntroImagesPreview() {
+            const container = document.getElementById('existingIntroImages');
+            container.innerHTML = '';
+            
+            if (productIntroImagesList.length === 0) return;
+            
+            const label = document.createElement('div');
+            label.style.cssText = 'width:100%; font-size:0.85rem; color:#666; margin-bottom:4px;';
+            label.textContent = '图文介绍图片（拖拽排序）:';
+            container.appendChild(label);
+            
+            productIntroImagesList.forEach((item, index) => {
+                if (!item) return; // 防御性检查
+                
+                const wrapper = document.createElement('div');
+                wrapper.style.cssText = 'position:relative; width:80px; display:inline-block; margin:4px;';
+                wrapper.draggable = true;
+                wrapper.dataset.index = index;
+                
+                const img = document.createElement('img');
+                const imgSrc = item.dataUrl || item.url || '';
+                if (!imgSrc) return; // 如果没有图片源，跳过
+                img.src = imgSrc;
+                img.style.cssText = 'width:80px;height:80px;object-fit:cover;border-radius:4px;border:2px solid #ddd; display:block;';
+                wrapper.appendChild(img);
+                
+                const orderLabel = document.createElement('div');
+                orderLabel.style.cssText = 'position:absolute; top:2px; left:2px; background:rgba(0,0,0,0.7); color:white; padding:2px 6px; border-radius:3px; font-size:12px;';
+                orderLabel.textContent = index + 1;
+                wrapper.appendChild(orderLabel);
+                
+                const controls = document.createElement('div');
+                controls.style.cssText = 'position:absolute; bottom:2px; left:2px; right:2px; display:flex; gap:2px;';
+                
+                if (index > 0) {
+                    const upBtn = document.createElement('button');
+                    upBtn.type = 'button';
+                    upBtn.innerHTML = '↑';
+                    upBtn.style.cssText = 'flex:1; padding:2px; background:rgba(255,255,255,0.9); border:1px solid #ddd; border-radius:3px; cursor:pointer; font-weight:bold;';
+                    upBtn.onclick = () => moveIntroImage(index, index - 1);
+                    controls.appendChild(upBtn);
+                }
+                
+                if (index < productIntroImagesList.length - 1) {
+                    const downBtn = document.createElement('button');
+                    downBtn.type = 'button';
+                    downBtn.innerHTML = '↓';
+                    downBtn.style.cssText = 'flex:1; padding:2px; background:rgba(255,255,255,0.9); border:1px solid #ddd; border-radius:3px; cursor:pointer; font-weight:bold;';
+                    downBtn.onclick = () => moveIntroImage(index, index + 1);
+                    controls.appendChild(downBtn);
+                }
+                
+                const delBtn = document.createElement('button');
+                delBtn.type = 'button';
+                delBtn.innerHTML = '×';
+                delBtn.style.cssText = 'flex:1; padding:2px; background:rgba(255,0,0,0.8); color:white; border:1px solid #c00; border-radius:3px; cursor:pointer; font-weight:bold;';
+                delBtn.onclick = () => removeIntroImage(index);
+                controls.appendChild(delBtn);
+                
+                wrapper.appendChild(controls);
+                
+                wrapper.addEventListener('dragstart', e => {
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('text/plain', index);
+                    wrapper.style.opacity = '0.5';
+                });
+                
+                wrapper.addEventListener('dragend', e => {
+                    wrapper.style.opacity = '1';
+                });
+                
+                wrapper.addEventListener('dragover', e => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    wrapper.style.borderColor = '#007bff';
+                });
+                
+                wrapper.addEventListener('dragleave', e => {
+                    wrapper.style.borderColor = '';
+                });
+                
+                wrapper.addEventListener('drop', e => {
+                    e.preventDefault();
+                    const fromIndex = parseInt(e.dataTransfer.getData('text/plain'));
+                    const toIndex = index;
+                    moveIntroImage(fromIndex, toIndex);
+                    wrapper.style.borderColor = '';
+                });
+                
+                container.appendChild(wrapper);
+            });
+        }
+        
+        function moveIntroImage(fromIndex, toIndex) {
+            const item = productIntroImagesList.splice(fromIndex, 1)[0];
+            productIntroImagesList.splice(toIndex, 0, item);
+            renderIntroImagesPreview();
+        }
+        
+        function removeIntroImage(index) {
+            if (confirm('确定要删除这张介绍图片吗？')) {
+                productIntroImagesList.splice(index, 1);
+                renderIntroImagesPreview();
+            }
+        }
+
+        document.getElementById('productForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const data = {
+                name: document.getElementById('productName').value,
+                enName: document.getElementById('productEnName').value,
+                swName: document.getElementById('productSwName').value,
+                categoryId: document.getElementById('productCategory').value,
+                price: document.getElementById('productPrice').value,
+                desc: document.getElementById('productDesc').value,
+                enDesc: document.getElementById('productEnDesc').value,
+                swDesc: document.getElementById('productSwDesc').value,
+                introText: document.getElementById('productIntroText').value,
+                introTextEn: document.getElementById('productIntroTextEn').value,
+                introTextSw: document.getElementById('productIntroTextSw').value
+            };
+
+            // 从productImagesList中提取新增的文件（保持顺序）
+            const imageFiles = productImagesList.filter(item => item.type === 'new').map(item => item.file);
+            // 提取现有图片的URL（保持顺序）
+            const existingImageUrls = productImagesList.filter(item => item.type === 'existing').map(item => item.url);
+            
+            // 同样处理介绍图片
+            const introFiles = productIntroImagesList.filter(item => item.type === 'new').map(item => item.file);
+            const existingIntroUrls = productIntroImagesList.filter(item => item.type === 'existing').map(item => item.url);
+
+            try {
+                const operationType = currentEditingProductId ? '编辑产品' : '添加产品';
+                const totalFiles = imageFiles.length + introFiles.length;
+                
+                if (totalFiles > 20) {
+                    showLoading(`${operationType}中... 正在上传 ${totalFiles} 张图片，请耐心等待（可能需要几分钟）`);
+                } else if (totalFiles > 10) {
+                    showLoading(`${operationType}中... 正在上传图片，请稍候`);
+                } else {
+                    showLoading(`${operationType}中...`);
+                }
+                
+                let response;
+                if (currentEditingProductId) {
+                    response = await DataManager.updateProduct(currentEditingProductId, data, imageFiles, existingImageUrls, introFiles, existingIntroUrls);
+                } else {
+                    response = await DataManager.createProduct(data, imageFiles, introFiles);
+                }
+
+                if (response.success) {
+                    hideLoading();
+                    showMessage(response.message, 'success');
+                    document.getElementById('productModal').classList.remove('show');
+                    await loadProducts();
+                } else {
+                    hideLoading();
+                    showMessage(response.message || '保存失败', 'error');
+                }
+            } catch (error) {
+                hideLoading();
+                console.error('保存产品失败:', error);
+                showMessage('保存产品失败: ' + error.message, 'error');
+            }
+        });
+
+        window.editProduct = function(id) {
+            const product = allProducts.find(p => p.id === id);
+            if (!product) return;
+
+            currentEditingProductId = id;
+            document.getElementById('productName').value = product.name;
+            document.getElementById('productEnName').value = product.enName;
+            document.getElementById('productSwName').value = product.swName || '';
+            document.getElementById('productCategory').value = product.categoryId;
+            document.getElementById('productPrice').value = product.price;
+            document.getElementById('productDesc').value = product.desc || '';
+            document.getElementById('productEnDesc').value = product.enDesc || '';
+            document.getElementById('productSwDesc').value = product.swDesc || '';
+            document.getElementById('productIntroText').value = product.introText || '';
+            document.getElementById('productIntroTextEn').value = product.introTextEn || '';
+            document.getElementById('productIntroTextSw').value = product.introTextSw || '';
+            
+            // 初始化产品主图列表
+            document.getElementById('imagePreview').innerHTML = '';
+            const productImages = product.images || (product.imageUrl ? [product.imageUrl] : []);
+            productImagesList = productImages.map(url => ({ type: 'existing', url: url, dataUrl: url }));
+            renderProductImagesPreview();
+
+            // 初始化图文介绍图片列表
+            document.getElementById('introImagesPreview').innerHTML = '';
+            const introImages = product.introImages || [];
+            productIntroImagesList = introImages.map(url => ({ type: 'existing', url: url, dataUrl: url }));
+            renderIntroImagesPreview();
+
+            document.getElementById('productModalTitle').textContent = '编辑产品';
+            document.getElementById('productModal').classList.add('show');
+        };
+
+        window.deleteProduct = async function(id) {
+            if (!confirm('确定要删除该产品吗？')) return;
+
+            try {
+                showLoading('删除产品中...');
+                const response = await DataManager.deleteProduct(id);
+
+                if (response.success) {
+                    hideLoading();
+                    showMessage(response.message, 'success');
+                    await loadProducts();
+                } else {
+                    hideLoading();
+                    showMessage(response.message || '删除失败', 'error');
+                }
+            } catch (error) {
+                hideLoading();
+                console.error('删除产品失败:', error);
+                showMessage('删除产品失败: ' + error.message, 'error');
+            }
+        };
+
+        // ==================== 分类管理 ====================
+
+        async function loadCategories() {
+            try {
+                showLoading('加载分类列表...');
+                saveScrollPosition();
+                const response = await DataManager.getAllCategories();
+
+                if (response.success) {
+                    allCategories = response.data;
+                    renderCategoriesTable();
+                    updateProductCategorySelect();
+                    hideLoading();
+                    restoreScrollPosition();
+                }
+            } catch (error) {
+                hideLoading();
+                console.error('加载分类列表失败:', error);
+                showMessage('加载分类列表失败: ' + error.message, 'error');
+            }
+        }
+
+        function renderCategoriesTable() {
+            const container = document.getElementById('categoriesTable');
+
+            if (allCategories.length === 0) {
+                const emptyHtml = `
+                    <div class="empty-state">
+                        <i class="fas fa-list"></i>
+                        <h4>暂无分类数据</h4>
+                        <p>点击"添加新分类"按钮创建第一个分类</p>
+                    </div>
+                `;
+                updateContentWithFade(container, emptyHtml);
+                return;
+            }
+
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>分类名称（中文）</th>
+                            <th>分类名称（英文）</th>
+                            <th>分类名称（斯瓦希里语）</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            allCategories.forEach(category => {
+                html += `
+                    <tr>
+                        <td>${category.id}</td>
+                        <td>${category.name}</td>
+                        <td>${category.enName}</td>
+                        <td>${category.swName || 'N/A'}</td>
+                        <td>
+                            <button class="btn-edit" onclick="editCategory('${category.id}')"><i class="fas fa-edit"></i> 编辑</button>
+                            <button class="btn-delete" onclick="deleteCategory('${category.id}')"><i class="fas fa-trash"></i> 删除</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            updateContentWithFade(container, html);
+        }
+
+        document.getElementById('addCategoryBtn').addEventListener('click', () => {
+            currentEditingCategoryId = null;
+            document.getElementById('categoryForm').reset();
+            document.getElementById('categoryModalTitle').textContent = '添加新分类';
+            document.getElementById('categoryModal').classList.add('show');
+        });
+
+        document.getElementById('categoryForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const data = {
+                name: document.getElementById('categoryName').value,
+                enName: document.getElementById('categoryEnName').value,
+                swName: document.getElementById('categorySwName').value
+            };
+
+            try {
+                const operationType = currentEditingCategoryId ? '编辑分类' : '添加分类';
+                showLoading(operationType + '中...');
+                
+                let response;
+                if (currentEditingCategoryId) {
+                    response = await DataManager.updateCategory(currentEditingCategoryId, data);
+                } else {
+                    response = await DataManager.createCategory(data);
+                }
+
+                if (response.success) {
+                    hideLoading();
+                    showMessage(response.message, 'success');
+                    document.getElementById('categoryModal').classList.remove('show');
+                    await loadCategories();
+                } else {
+                    hideLoading();
+                    showMessage(response.message || '保存失败', 'error');
+                }
+            } catch (error) {
+                hideLoading();
+                console.error('保存分类失败:', error);
+                showMessage('保存分类失败: ' + error.message, 'error');
+            }
+        });
+
+        window.editCategory = function(id) {
+            const category = allCategories.find(c => c.id === parseInt(id));
+            if (!category) return;
+
+            currentEditingCategoryId = id;
+            document.getElementById('categoryName').value = category.name;
+            document.getElementById('categoryEnName').value = category.enName;
+            document.getElementById('categorySwName').value = category.swName || '';
+
+            document.getElementById('categoryModalTitle').textContent = '编辑分类';
+            document.getElementById('categoryModal').classList.add('show');
+        };
+
+        window.deleteCategory = async function(id) {
+            if (!confirm('确定要删除该分类吗？')) return;
+
+            try {
+                showLoading('删除分类中...');
+                const response = await DataManager.deleteCategory(id);
+
+                if (response.success) {
+                    hideLoading();
+                    showMessage(response.message, 'success');
+                    await loadCategories();
+                } else {
+                    hideLoading();
+                    showMessage(response.message || '删除失败', 'error');
+                }
+            } catch (error) {
+                hideLoading();
+                console.error('删除分类失败:', error);
+                showMessage('删除分类失败: ' + error.message, 'error');
+            }
+        };
+
+        // ==================== 团队成员管理 ====================
+        let allTeamMembers = [];
+        let currentEditingMemberId = null;
+
+        async function loadTeamMembers() {
+            try {
+                const response = await DataManager.getTeamMembers();
+                if (response && response.success && Array.isArray(response.data)) {
+                    allTeamMembers = response.data;
+                    renderTeamMembersTable();
+                } else {
+                    showMessage('加载团队成员失败', 'error');
+                }
+            } catch (error) {
+                console.error('加载团队成员错误:', error);
+                showMessage('加载团队成员失败: ' + error.message, 'error');
+            }
+        }
+
+        function renderTeamMembersTable() {
+            const container = document.querySelector('#team-members .table-container');
+            if (!container) return;
+
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>名称（中文）</th>
+                            <th>名称（英文）</th>
+                            <th>职位</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            if (allTeamMembers.length === 0) {
+                html += '<tr><td colspan="4" style="text-align: center; padding: 20px;">暂无团队成员</td></tr>';
+            } else {
+                allTeamMembers.forEach(member => {
+                    html += `
+                        <tr>
+                            <td>${member.name || '-'}</td>
+                            <td>${member.enName || '-'}</td>
+                            <td>${member.role || '-'}</td>
+                            <td>
+                                <button class="btn-edit" onclick="editTeamMember('${member.id}')"><i class="fas fa-edit"></i> 编辑</button>
+                                <button class="btn-delete" onclick="deleteTeamMember('${member.id}')"><i class="fas fa-trash"></i> 删除</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            }
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        function showTeamMemberModal() {
+            currentEditingMemberId = null;
+            document.getElementById('teamMemberForm').reset();
+            document.getElementById('teamMemberImgPreview').innerHTML = '';
+            document.getElementById('teamMemberModal').classList.add('show');
+        }
+
+        // Add Team Member button event listener
+        const addTeamMemberBtn = document.getElementById('addTeamMemberBtn');
+        if (addTeamMemberBtn) {
+            addTeamMemberBtn.addEventListener('click', showTeamMemberModal);
+        }
+
+        // 图片预览
+        document.getElementById('teamMemberImage').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const preview = document.getElementById('teamMemberImgPreview');
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    preview.innerHTML = `<img src="${event.target.result}" style="max-width: 100px; max-height: 100px; margin: 10px 0;">`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('teamMemberForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const fileInput = document.getElementById('teamMemberImage');
+            const formData = new FormData();
+
+            formData.append('name', document.getElementById('memberName').value);
+            formData.append('enName', document.getElementById('memberEnName').value);
+            formData.append('swName', document.getElementById('memberSwName').value);
+            formData.append('role', document.getElementById('memberRole').value);
+            formData.append('enRole', document.getElementById('memberEnRole').value);
+            formData.append('swRole', document.getElementById('memberSwRole').value);
+            formData.append('desc', document.getElementById('memberDesc').value);
+            formData.append('enDesc', document.getElementById('memberEnDesc').value);
+            formData.append('swDesc', document.getElementById('memberSwDesc').value);
+
+            if (fileInput.files.length > 0) {
+                formData.append('image', fileInput.files[0]);
+            }
+
+            try {
+                const operationType = currentEditingMemberId ? '编辑成员' : '添加成员';
+                showLoading(operationType + '中...');
+
+                let response;
+                if (currentEditingMemberId) {
+                    response = await DataManager.updateTeamMember(currentEditingMemberId, formData);
+                } else {
+                    response = await DataManager.createTeamMember(formData);
+                }
+
+                hideLoading();
+
+                if (response.success) {
+                    showMessage(response.message, 'success');
+                    document.getElementById('teamMemberModal').classList.remove('show');
+                    await loadTeamMembers();
+                } else {
+                    showMessage(response.message || '保存失败', 'error');
+                }
+            } catch (error) {
+                hideLoading();
+                console.error('保存成员失败:', error);
+                showMessage('保存成员失败: ' + error.message, 'error');
+            }
+        });
+
+        window.editTeamMember = function(id) {
+            const member = allTeamMembers.find(m => m.id === id);
+            if (!member) return;
+
+            currentEditingMemberId = id;
+            document.getElementById('memberName').value = member.name || '';
+            document.getElementById('memberEnName').value = member.enName || '';
+            document.getElementById('memberSwName').value = member.swName || '';
+            document.getElementById('memberRole').value = member.role || '';
+            document.getElementById('memberEnRole').value = member.enRole || '';
+            document.getElementById('memberSwRole').value = member.swRole || '';
+            document.getElementById('memberDesc').value = member.desc || '';
+            document.getElementById('memberEnDesc').value = member.enDesc || '';
+            document.getElementById('memberSwDesc').value = member.swDesc || '';
+
+            if (member.image) {
+                document.getElementById('teamMemberImgPreview').innerHTML = `<img src="${member.image}" style="max-width: 100px; max-height: 100px; margin: 10px 0;">`;
+            }
+
+            document.getElementById('teamMemberModal').classList.add('show');
+        };
+
+        window.deleteTeamMember = async function(id) {
+            if (!confirm('确定要删除该成员吗？')) return;
+
+            try {
+                showLoading('删除成员中...');
+                const response = await DataManager.deleteTeamMember(id);
+
+                hideLoading();
+                if (response.success) {
+                    showMessage(response.message, 'success');
+                    await loadTeamMembers();
+                } else {
+                    showMessage(response.message || '删除失败', 'error');
+                }
+            } catch (error) {
+                hideLoading();
+                console.error('删除成员失败:', error);
+                showMessage('删除成员失败: ' + error.message, 'error');
+            }
+        };
+
+        // ==================== 联系消息管理 ====================
+        let allContacts = [];
+
+        async function loadContacts() {
+            try {
+                const response = await DataManager.getContacts();
+                if (response && response.success && Array.isArray(response.data)) {
+                    allContacts = response.data;
+                    renderContactsTable();
+                } else {
+                    showMessage('加载联系消息失败', 'error');
+                }
+            } catch (error) {
+                console.error('加载联系消息错误:', error);
+                showMessage('加载联系消息失败: ' + error.message, 'error');
+            }
+        }
+
+        function renderContactsTable() {
+            const container = document.querySelector('#contacts .table-container');
+            if (!container) return;
+
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>邮箱</th>
+                            <th>电话</th>
+                            <th>时间</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            if (allContacts.length === 0) {
+                html += '<tr><td colspan="6" style="text-align: center; padding: 20px;">暂无联系消息</td></tr>';
+            } else {
+                allContacts.forEach(contact => {
+                    const status = contact.isRead ? '<span style="color: green;">已读</span>' : '<span style="color: red;">未读</span>';
+                    const date = new Date(contact.createdAt).toLocaleString('zh-CN');
+                    html += `
+                        <tr>
+                            <td>${contact.name || '-'}</td>
+                            <td>${contact.email || '-'}</td>
+                            <td>${contact.phone || '-'}</td>
+                            <td>${date}</td>
+                            <td>${status}</td>
+                            <td>
+                                <button class="btn-view" onclick="viewContactDetail('${contact.id}')"><i class="fas fa-eye"></i> 查看</button>
+                                <button class="btn-delete" onclick="deleteContact('${contact.id}')"><i class="fas fa-trash"></i> 删除</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            }
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        window.viewContactDetail = async function(id) {
+            try {
+                showLoading('加载中...');
+                const response = await DataManager.getContact(id);
+                hideLoading();
+
+                if (response && response.success && response.data) {
+                    const contact = response.data;
+                    const date = new Date(contact.createdAt).toLocaleString('zh-CN');
+                    
+                    let html = `
+                        <div style="padding: 20px;">
+                            <p><strong>名称:</strong> ${contact.name || '-'}</p>
+                            <p><strong>邮箱:</strong> ${contact.email || '-'}</p>
+                            <p><strong>电话:</strong> ${contact.phone || '-'}</p>
+                            <p><strong>时间:</strong> ${date}</p>
+                            <p><strong>消息:</strong></p>
+                            <div style="background: #f5f5f5; padding: 10px; border-radius: 4px; min-height: 80px;">
+                                ${contact.message || '-'}
+                            </div>
+                            <p><strong>状态:</strong> ${contact.isRead ? '已读' : '未读'}</p>
+                        </div>
+                    `;
+
+                    document.getElementById('contactDetail').innerHTML = html;
+                    document.getElementById('contactDetailModal').classList.add('show');
+                }
+            } catch (error) {
+                hideLoading();
+                console.error('加载联系详情失败:', error);
+                showMessage('加载联系详情失败', 'error');
+            }
+        };
+
+        window.deleteContact = async function(id) {
+            if (!confirm('确定要删除该消息吗？')) return;
+
+            try {
+                showLoading('删除中...');
+                const response = await DataManager.deleteContact(id);
+
+                hideLoading();
+                if (response.success) {
+                    showMessage(response.message, 'success');
+                    document.getElementById('contactDetailModal').classList.remove('show');
+                    await loadContacts();
+                } else {
+                    showMessage(response.message || '删除失败', 'error');
+                }
+            } catch (error) {
+                hideLoading();
+                console.error('删除消息失败:', error);
+                showMessage('删除消息失败: ' + error.message, 'error');
+            }
+        };
+
+        // ==================== 公司信息管理 ====================
+
+        async function loadCompanyInfo() {
+            try {
+                const response = await DataManager.getCompanyInfo();
+                if (response && response.success && response.data) {
+                    const data = response.data;
+                    document.getElementById('desc1En').value = data.desc1_en || '';
+                    document.getElementById('desc2En').value = data.desc2_en || '';
+                    document.getElementById('desc1Sw').value = data.desc1_sw || '';
+                    document.getElementById('desc2Sw').value = data.desc2_sw || '';
+                    document.getElementById('desc1Zh').value = data.desc1_zh || '';
+                    document.getElementById('desc2Zh').value = data.desc2_zh || '';
+                }
+            } catch (error) {
+                console.error('加载公司信息错误:', error);
+                showMessage('加载公司信息失败: ' + error.message, 'error');
+            }
+        }
+
+        document.getElementById('companyInfoForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const data = {
+                desc1_en: document.getElementById('desc1En').value,
+                desc2_en: document.getElementById('desc2En').value,
+                desc1_sw: document.getElementById('desc1Sw').value,
+                desc2_sw: document.getElementById('desc2Sw').value,
+                desc1_zh: document.getElementById('desc1Zh').value,
+                desc2_zh: document.getElementById('desc2Zh').value
+            };
+
+            try {
+                showLoading('保存中...');
+                const response = await DataManager.updateCompanyInfo(data);
+
+                hideLoading();
+                if (response.success) {
+                    showMessage(response.message || '公司信息已保存', 'success');
+                } else {
+                    showMessage(response.message || '保存失败', 'error');
+                }
+            } catch (error) {
+                hideLoading();
+                console.error('保存公司信息失败:', error);
+                showMessage('保存公司信息失败: ' + error.message, 'error');
+            }
+        });
+
+        // ==================== 页面切换事件 ====================
+
+        document.querySelectorAll('.sidebar-menu a').forEach(link => {
+            link.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('data-page');
+                
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+                document.getElementById(page).classList.add('active');
+
+                document.querySelectorAll('.sidebar-menu a').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                // 加载相应数据
+                if (page === 'dashboard') {
+                    await loadStats();
+                } else if (page === 'products') {
+                    await loadProducts();
+                } else if (page === 'categories') {
+                    await loadCategories();
+                } else if (page === 'team-members') {
+                    await loadTeamMembers();
+                } else if (page === 'contacts') {
+                    await loadContacts();
+                } else if (page === 'company-info') {
+                    await loadCompanyInfo();
+                }
+            });
+        });
+
+        // ==================== 初始化 ====================
+
+        if (checkAuth()) {
+            displayUserName();
+            loadStats();
+        }
+    </script>
+</body>
+</html>

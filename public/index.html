@@ -1,0 +1,1563 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHEERFUL - Premium Building Materials</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="showPage('home'); return false;">CHEERFUL</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="showPage('home')" data-zh="主页" data-en="Home" data-sw="Nyumba">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="showPage('products')" data-zh="产品" data-en="Products" data-sw="Bidhaa">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="showPage('about')" data-zh="关于" data-en="About" data-sw="Juu ya">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="showPage('contact')" data-zh="联系" data-en="Contact" data-sw="Wasiliana">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="lang-switch">
+                <a href="#" onclick="switchLanguage('zh'); return false;">中文</a> |
+                <a href="#" class="active" onclick="switchLanguage('en'); return false;">EN</a> |
+                <a href="#" onclick="switchLanguage('sw'); return false;">SW</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页 -->
+    <div id="home" class="page active">
+        <!-- 轮播图 -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+            </div>
+            
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" class="d-block w-100" alt="Furniture">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 data-zh="优质建筑材料" data-en="Premium Building Materials" data-sw="Bidhaa za Ujenzi ya Kiwango Cha Juu">Premium Building Materials</h1>
+                        <p data-zh="东非优质建筑材料供应商" data-en="High-quality products for every construction and interior design project in East Africa"
+                           data-sw="Bidhaa za ubora kwa kila mradi wa ujenzi na usanifu wa ndani huko Afrika Mashariki">
+                            High-quality products for every construction and interior design project in East Africa
+                        </p>
+                        <a href="#" onclick="showPage('products'); return false;" class="btn btn-primary-custom" data-zh="立即购买" data-en="Explore Products" data-sw="Tazama Bidhaa">Explore Products</a>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" class="d-block w-100" alt="Lighting">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 data-zh="现代照明解决方案" data-en="Modern Lighting Solutions" data-sw="Masolutions ya Mwangaza wa Kisasa">Modern Lighting Solutions</h1>
+                        <p data-zh="节能照明灯具" data-en="Energy-efficient lighting fixtures for homes and commercial spaces"
+                           data-sw="Vifaa vya mwangaza yenye ufanisi wa nishati kwa nyumba na nafasi za biashara">
+                            Energy-efficient lighting fixtures for homes and commercial spaces
+                        </p>
+                        <a href="#" onclick="filterByCategory(3); return false;" class="btn btn-primary-custom" data-zh="查看照明" data-en="View Lighting" data-sw="Tazama Mwangaza">View Lighting</a>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <img src="/images/jimeng-2026-02-19-8971.png" class="d-block w-100" alt="Materials">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 data-zh="完整建筑解决方案" data-en="Complete Construction Solutions" data-sw="Masolutions Kamili ya Ujenzi">Complete Construction Solutions</h1>
+                        <p data-zh="瓷砖、油漆、卫浴等" data-en="Tiles, paints, sanitary ware and more - everything you need for your project"
+                           data-sw="Mabati, maua, vifaa vya maji na mengi zaidi - kila kitu unachohitaji kwa mradi wako">
+                            Tiles, paints, sanitary ware and more - everything you need for your project
+                        </p>
+                        <a href="#" onclick="showPage('products'); return false;" class="btn btn-primary-custom" data-zh="立即购买" data-en="Shop Now" data-sw="Nunua Sasa">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+
+        <!-- 产品分类快捷入口 -->
+        <section class="category-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2 data-zh="产品分类" data-en="Our Product Categories" data-sw="Viundo Vyetu vya Bidhaa">Our Product Categories</h2>
+                </div>
+                
+                <div class="row g-4" id="categoriesGrid"></div>
+            </div>
+        </section>
+
+        <!-- 特色产品 -->
+        <section style="padding: 4rem 0; background-color: var(--light-bg);">
+            <div class="container">
+                <div class="section-title">
+                    <h2 data-zh="热门产品" data-en="Featured Products" data-sw="Bidhaa Zinazoongezwa">Featured Products</h2>
+                </div>
+                <div class="product-grid" id="featuredProducts"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 产品列表页 -->
+    <!-- 产品列表页 -->
+    <div id="products" class="page">
+        <div class="page-header">
+            <div class="container">
+                <h1 data-zh="产品列表" data-en="Our Products" data-sw="Bidhaa Zetu">Our Products</h1>
+                <div class="breadcrumbs" style="display: flex; justify-content: center; gap: 0.5rem; color: #ccc; font-size: 0.9rem;">
+                    <a href="#" onclick="showPage('home')" style="color: #ccc; text-decoration: none;" data-zh="主页" data-en="Home" data-sw="Nyumbani">Home</a>
+                    <span>/</span>
+                    <span class="active" style="color: white; font-weight: 500;" data-zh="产品" data-en="Products" data-sw="Bidhaa">Products</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 产品列表主区域 -->
+        <section class="products-container">
+            <div class="container">
+                <div class="row">
+                    <!-- 筛选侧边栏 -->
+                    <div class="col-lg-3 col-md-4">
+                        <div class="filter-sidebar">
+                            <h3 class="filter-title" data-zh="筛选产品" data-en="Filter Products" data-sw="Chambua Bidhaa">Filter Products</h3>
+                            
+                            <!-- 类别筛选 -->
+                            <div class="filter-section">
+                                <h4 data-zh="产品分类" data-en="Product Category" data-sw="Aina ya Bidhaa">Product Category</h4>
+                                <div id="categoryFilters"></div>
+                            </div>
+                            
+                            <!-- 价格范围筛选 -->
+                            <div class="filter-section" style="display: none;">
+                                <h4 data-zh="价格范围" data-en="Price Range" data-sw="Mzunguko wa Bei">Price Range</h4>
+                                <input type="range" min="0" max="5000" value="2500" class="price-range" id="price-max" style="width: 100%; margin-bottom: 1rem;">
+                                <div class="price-labels" style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #666;">
+                                    <span data-en="$0" data-sw="$0">$0</span>
+                                    <span id="price-value">$2500</span>
+                                </div>
+                            </div>
+                            
+                            <button class="filter-btn" onclick="applyFilters()" data-zh="应用筛选" data-en="Apply Filters" data-sw="Wezesha Vichambuo">Apply Filters</button>
+                            <button class="clear-filter" onclick="clearFilters()" data-zh="清除全部" data-en="Clear All" data-sw="Futa Zote">Clear All</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 产品展示区域 -->
+                    <div class="col-lg-9 col-md-8">
+                        <!-- 排序栏 -->
+                        <div class="sort-bar">
+                            <div class="results-count" id="resultsCount">
+                                <span data-zh="显示" data-en="Showing" data-sw="Inaonyesha">Showing</span> <span id="productCount">0</span> <span data-zh="产品" data-en="products" data-sw="bidhaa">products</span>
+                            </div>
+                            
+                            <div class="sort-by">
+                                <label for="sort-select" style="font-weight: 500; margin: 0;" data-zh="排序方式：" data-en="Sort by:" data-sw="Ondoa kwa:">Sort by:</label>
+                                <select id="sort-select" class="sort-select" onchange="applyFilters()" style="padding: 0.5rem 1rem; border: 1px solid #ddd; border-radius: 4px; color: var(--primary-color); font-weight: 500; background-color: white;">
+                                    <option value="newest" data-zh="最新" data-en="Newest" data-sw="Mpya zaidi">Newest</option>
+                                </select>
+                            </div>
+                            
+                            <div class="view-toggle">
+                                <button class="view-btn active" data-view="grid" onclick="toggleView(this, 'grid')" style="width: 40px; height: 40px; border: 1px solid #ddd; border-radius: 4px; background-color: white; display: flex; align-items: center; justify-content: center; color: var(--primary-color); transition: all 0.3s ease; cursor: pointer;"><i class="fas fa-th"></i></button>
+                                <button class="view-btn" data-view="list" onclick="toggleView(this, 'list')" style="width: 40px; height: 40px; border: 1px solid #ddd; border-radius: 4px; background-color: white; display: flex; align-items: center; justify-content: center; color: var(--primary-color); transition: all 0.3s ease; cursor: pointer; margin-left: 0.5rem;"><i class="fas fa-list"></i></button>
+                            </div>
+                        </div>
+                        
+                        <!-- 产品网格 -->
+                        <div class="product-grid" id="productsGrid"></div>
+                        <div id="noProducts" style="text-align: center; padding: 3rem; color: #999; display: none;">
+                            <p data-zh="未找到产品" data-en="No products found" data-sw="Hakuna bidhaa zilizojifunza">No products found</p>
+                        </div>
+                        
+                        <!-- 分页 -->
+                        <div class="pagination-container" id="paginationContainer" style="display: none; margin-top: 3rem; display: flex; justify-content: center;">
+                            <ul class="pagination" id="paginationList" style="display: flex; gap: 0.5rem; list-style: none;"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 产品详情页 -->
+    <div id="product-detail" class="page">
+        <div class="page-header">
+            <div class="container">
+                <h1 data-zh="产品详情" data-en="Product Details" data-sw="Maelezo ya Bidhaa">Product Details</h1>
+            </div>
+        </div>
+
+        <div class="product-detail">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="detail-gallery">
+                            <div class="main-image">
+                                <img id="mainImage" src="" alt="">
+                            </div>
+                            <div class="thumbnails" id="thumbnailsContainer"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="detail-info">
+                            <h2 id="detailName"></h2>
+                            <p style="color: #666; margin-bottom: 1rem;" id="detailEnName"></p>
+                            <div class="detail-price" id="detailPrice" style="display: none;"></div>
+                            
+                            <div class="detail-specs">
+                                <div class="spec-row">
+                                    <span class="spec-label" data-zh="分类:" data-en="Category:" data-sw="Kategoria:">Category:</span>
+                                    <span id="detailCategory"></span>
+                                </div>
+                                <div class="spec-row">
+                                    <span class="spec-label" data-zh="库存:" data-en="Availability:" data-sw="Upatikanaji:">Availability:</span>
+                                    <span style="color: #28a745;" data-zh="有货" data-en="In Stock" data-sw="Inipo">In Stock</span>
+                                </div>
+                                <div class="spec-row">
+                                    <span class="spec-label" data-zh="SKU:" data-en="SKU:" data-sw="SKU:">SKU:</span>
+                                    <span id="detailId"></span>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 2rem;">
+                                <h4 data-zh="描述" data-en="Description" data-sw="Maelezo">Description</h4>
+                                <p id="detailDesc" style="color: #666;"></p>
+                            </div>
+
+                            <button class="btn-primary-custom" style="margin-right: 1rem; width: 100%; margin-bottom: 1rem;" data-zh="获取报价" data-en="Get Quote" data-sw="Pata Zabuni">Get Quote</button>
+                            <button class="btn-primary-custom" style="background-color: transparent; border: 2px solid var(--accent-color); color: var(--primary-color); width: 100%;" data-zh="添加询价" data-en="Add to Inquiry" data-sw="Ongeza kwa Swali">Add to Inquiry</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 图文介绍 -->
+                <div id="productIntroSection" style="display:none; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #eee;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;" data-zh="图文介绍" data-en="Product Introduction" data-sw="Utangulizi wa Bidhaa">Product Introduction</h3>
+                    <div id="introImagesGrid" style="width: 100%; margin-bottom: 1.5rem;"></div>
+                    <div id="introTextContent" style="color: #555; line-height: 1.8; font-size: 1rem; white-space: pre-wrap;"></div>
+                </div>
+
+                <!-- 相关产品 -->
+                <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #eee;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 2rem;" data-zh="相关产品" data-en="Related Products" data-sw="Bidhaa Zinazohusiana">Related Products</h3>
+                    <div class="product-grid" id="relatedProducts"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 关于我们页 -->
+    <div id="about" class="page">
+        <div class="page-header">
+            <div class="container">
+                <h1 data-zh="关于我们" data-en="About Us" data-sw="Kuhusu Sisi">About Us</h1>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <div class="container">
+                <!-- 公司介绍卡片 -->
+                <div class="section-card" style="background-color: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 3rem;">
+                    <h2 class="section-title" data-zh="公司概览" data-en="Company Overview" data-sw="Muhtasari wa Kampuni" style="font-weight: 700; color: var(--primary-color); font-size: 1.8rem; margin-bottom: 2rem; position: relative; display: inline-block; padding-bottom: 0.8rem;">Company Overview</h2>
+                    <div class="section-title" style="display: none;"></div>
+                    
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p class="company-desc" id="companyDesc1" style="color: #555; line-height: 1.8; font-size: 1.05rem; margin-bottom: 2rem;"></p>
+                            <p class="company-desc" id="companyDesc2" style="color: #555; line-height: 1.8; font-size: 1.05rem; margin-bottom: 2rem;"></p>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="/images/company.png" 
+                                 alt="Company Office" 
+                                 class="img-fluid rounded shadow"
+                                 onerror="this.src='/uploads/placeholder.png'">
+                        </div>
+                    </div>
+                    
+                    <!-- 公司数据统计 -->
+                    <div class="company-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                        <div class="stat-item" style="text-align: center; padding: 1.5rem; background-color: var(--light-bg); border-radius: 8px;">
+                            <div class="stat-number" id="statsExperience" style="font-size: 2.5rem; font-weight: 700; color: var(--accent-color); margin-bottom: 0.5rem;">13+</div>
+                            <div class="stat-label" data-zh="年工作经验" data-en="Years of Experience" data-sw="Miaka ya Uzoefu" style="font-weight: 500; color: var(--primary-color);">Years of Experience</div>
+                        </div>
+                        <div class="stat-item" style="text-align: center; padding: 1.5rem; background-color: var(--light-bg); border-radius: 8px;">
+                            <div class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: var(--accent-color); margin-bottom: 0.5rem;">2</div>
+                            <div class="stat-label" data-zh="地区办公室" data-en="Regional Offices" data-sw="Ofisi za Mkoa" style="font-weight: 500; color: var(--primary-color);">Regional Offices</div>
+                        </div>
+                        <div class="stat-item" style="text-align: center; padding: 1.5rem; background-color: var(--light-bg); border-radius: 8px;">
+                            <div class="stat-number" id="statsCustomers" style="font-size: 2.5rem; font-weight: 700; color: var(--accent-color); margin-bottom: 0.5rem;">20+</div>
+                            <div class="stat-label" data-zh="满意客户" data-en="Happy Customers" data-sw="Wateja wenye Furaha" style="font-weight: 500; color: var(--primary-color);">Happy Customers</div>
+                        </div>
+                        <div class="stat-item" style="text-align: center; padding: 1.5rem; background-color: var(--light-bg); border-radius: 8px;">
+                            <div class="stat-number" id="statsProducts" style="font-size: 2.5rem; font-weight: 700; color: var(--accent-color); margin-bottom: 0.5rem;">0+</div>
+                            <div class="stat-label" data-zh="产品分类" data-en="Product Categories" data-sw="Viundo vya Bidhaa" style="font-weight: 500; color: var(--primary-color);">Product Categories</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 团队展示 -->
+                <div class="section-card" style="background-color: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 3rem;">
+                    <h2 class="section-title" data-zh="我们的团队" data-en="Our Team" data-sw="Timu Yetu" style="font-weight: 700; color: var(--primary-color); font-size: 1.8rem; margin-bottom: 2rem; position: relative; display: inline-block; padding-bottom: 0.8rem;">Our Team</h2>
+                    
+                    <div class="team-grid" id="teamGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2rem; margin-top: 2rem;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 联系我们页 -->
+    <div id="contact" class="page">
+        <div class="page-header">
+            <div class="container">
+                <h1 data-zh="联系我们" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</h1>
+            </div>
+        </div>
+
+        <section class="contact-section">
+            <div class="container">
+                <div class="row">
+                    <!-- 联系表单 -->
+                    <div class="col-lg-7">
+                        <div class="section-card">
+                            <h2 class="section-title" data-zh="为我们发送消息" data-en="Send Us a Message" data-sw="Tuma Ujumbe Kwetu">Send Us a Message</h2>
+                            
+                            <div id="contactAlert" class="alert"></div>
+
+                            <form id="contactFormEl">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="contactName" data-zh="姓名" data-en="Full Name" data-sw="Jina Kamili">Full Name</label>
+                                            <input type="text" class="form-control" id="contactName" name="name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="contactEmail" data-zh="电子邮件地址" data-en="Email Address" data-sw="Anwani ya Barua Pepe">Email Address</label>
+                                            <input type="email" class="form-control" id="contactEmail" name="email" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactPhone" data-zh="电话号码" data-en="Phone Number" data-sw="Nambari ya Simu">Phone Number</label>
+                                    <input type="tel" class="form-control" id="contactPhone" name="phone" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactMessage" data-zh="您的消息" data-en="Your Message" data-sw="Ujumbe Wako">Your Message</label>
+                                    <textarea class="form-control" id="contactMessage" name="message" rows="5" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn-submit" data-zh="发送消息" data-en="Send Message" data-sw="Tuma Ujumbe">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- 联系方式 -->
+                    <div class="col-lg-5" id="contactInfoContainer">
+                        <!-- 动态生成的联系卡片 -->
+                    </div>
+                </div>
+                
+                <!-- 地图展示 -->
+                <div class="section-card mt-4">
+                    <h2 class="section-title" data-zh="我们的位置" data-en="Our Location" data-sw="Mahali Pamwe Tulipo">Our Location</h2>
+                    
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <h4 data-zh="交互式地图" data-en="Interactive Map" data-sw="Map ya Mwingiliano">Interactive Map</h4>
+                            <p data-zh="点击查看我们在谷歌地图上的办公室位置" data-en="Click to view our office locations on Google Maps" data-sw="Bonyeza kuona maeneo ya ofisi zetu kwenye Map ya Google">Click to view our office locations on Google Maps</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-center mt-3 contact-hours" style="color: #666;" data-zh="周一至周五，东非时间上午8:00至下午6:00" data-en="We are available Monday to Friday from 8:00 AM to 6:00 PM EAT" data-sw="Tuko wazi Jumatatu hadi Jumatano kutoka saa 8:00 Asubuhi hadi saa 18:00 Magharibi ya Afrika">
+                        We are available Monday to Friday from 8:00 AM to 6:00 PM EAT
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 footer-col">
+                    <h5 data-zh="CHEERFUL" data-en="CHEERFUL" data-sw="CHEERFUL">CHEERFUL</h5>
+                    <p style="color: #ccc; margin-bottom: 1rem;" data-zh="东非优质建筑材料" data-en="Premium building materials for East Africa" data-sw="Bidhaa za ujenzi za kiwango cha juu kwa Afrika Mashariki">Premium building materials for East Africa</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 footer-col">
+                    <h5 data-zh="快速链接" data-en="Quick Links" data-sw="Link za Haraka">Quick Links</h5>
+                    <ul>
+                        <li><a href="#" onclick="showPage('home'); return false;" data-zh="主页" data-en="Home" data-sw="Nyumba">Home</a></li>
+                        <li><a href="#" onclick="showPage('products'); return false;" data-zh="产品" data-en="Products" data-sw="Bidhaa">Products</a></li>
+                        <li><a href="#" onclick="showPage('about'); return false;" data-zh="关于我们" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                        <li><a href="#" onclick="showPage('contact'); return false;" data-zh="联系我们" data-en="Contact" data-sw="Wasiliana">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 footer-col">
+                    <h5 data-zh="产品分类" data-en="Categories" data-sw="Kategoria">Categories</h5>
+                    <ul id="footerCategories"></ul>
+                </div>
+
+                <div class="col-lg-3 footer-col">
+                    <h5 data-zh="联系信息" data-en="Contact Info" data-sw="Taarifa za Mawasiliano">Contact Info</h5>
+                    <p style="color: #ccc;"><i class="fas fa-phone" style="color: var(--accent-color);"></i> +254 123 456 789</p>
+                    <p style="color: #ccc;"><i class="fas fa-envelope" style="color: var(--accent-color);"></i> info@cheerful.com</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2026 CHEERFUL Africa. <span data-zh="版权所有。" data-en="All rights reserved." data-sw="Haki zote zimehifadhiwa.">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // API 配置
+        const API_BASE_URL = 'https://cheerful.vsharev.com/api';
+        let allProducts = [];
+        let allCategories = [];
+        let currentLanguage = 'en';  // 默认英文
+        let currentDetailProductId = null; // 当前查看的产品ID
+        let autoSlideInterval = null; // 自动轮播定时器
+        let currentSlideIndex = 0; // 当前轮播图片索引
+
+        // 内部DOM切换（不写历史记录，供 popstate 调用）
+        function _displayPage(pageName) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            const target = document.getElementById(pageName);
+            if (!target) return;
+            target.classList.add('active');
+
+            // 离开产品详情页时清除自动轮播
+            if (pageName !== 'product-detail' && autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = null;
+            }
+
+            if (pageName === 'home') {
+                loadCategoriesGrid();
+                loadFeaturedProducts();
+            } else if (pageName === 'products') {
+                loadProductsList();
+            } else if (pageName === 'about') {
+                loadCompanyDescription();
+                loadTeamData();
+            } else if (pageName === 'contact') {
+                loadContactInfo();
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            updateLanguage();
+        }
+
+        // 页面显示（写入浏览器历史）
+        function showPage(pageName) {
+            history.pushState({ page: pageName }, '', '#' + pageName);
+            _displayPage(pageName);
+        }
+
+        // 加载分类
+        async function loadCategories() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/categories`);
+                const data = await response.json();
+                if (data.success) {
+                    allCategories = data.data;
+                    loadCategoriesGrid();
+                    loadFooterCategories();
+                }
+            } catch (error) {
+                console.error('加载分类失败:', error);
+            }
+        }
+
+        // 加载所有产品
+        async function loadAllProducts() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/products`);
+                const data = await response.json();
+                if (data.success) {
+                    allProducts = data.data;
+                }
+            } catch (error) {
+                console.error('加载产品失败:', error);
+            }
+        }
+
+        // 加载首页分类网格
+        function loadCategoriesGrid() {
+            const grid = document.getElementById('categoriesGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            
+            // 图标映射（支持不同图标样式）
+            const categoryIcons = {
+                '光伏': 'fa-solid fa-solar-panel',
+                'Solar': 'fa-solid fa-solar-panel',
+                'Photovoltaic': 'fa-solid fa-solar-panel',
+                '风扇': 'fa-solid fa-fan',
+                'Fan': 'fa-solid fa-fan',
+                'UPVC': 'fa-solid fa-cubes-stacked',
+                'upvc': 'fa-solid fa-cubes-stacked',
+                '硬件': 'fa-solid fa-table-cells-large',
+                'Hardware': 'fa-solid fa-table-cells-large',
+                'Pool Tiles': 'fa-brands fa-microsoft',
+                'Pool': 'fa-brands fa-microsoft',
+                'Outdoor Tiles': 'fa-brands fa-microsoft',
+                'Specialized': 'fa-brands fa-microsoft',
+                '瓷砖': 'fas fa-diamond',
+                'Tiles': 'fas fa-diamond',
+                'Mabati': 'fas fa-diamond',
+                '照明': 'fas fa-lightbulb',
+                'Lighting': 'fas fa-lightbulb',
+                'Mwangaza': 'fas fa-lightbulb',
+                '卫浴': 'fas fa-bath',
+                'Sanitary': 'fas fa-bath',
+                'Vifaa': 'fas fa-bath',
+                '油漆': 'fas fa-paint-roller',
+                'Paint': 'fas fa-paint-roller'
+            };
+            
+            // 加载所有分类，最多显示10个（两行）
+            const categoriesToShow = allCategories.slice(0, 10);
+            
+            categoriesToShow.forEach(category => {
+                const card = document.createElement('div');
+                // 根据分类数量决定列数：<=6为3列，>6为4列，>8为6列
+                const colClass = categoriesToShow.length <= 6 ? 'col-lg-4 col-md-6' : categoriesToShow.length > 8 ? 'col-lg-2 col-md-4' : 'col-lg-3 col-md-6';
+                card.className = colClass;
+                const categoryName = getCategoryName(category);
+                
+                // 根据分类的所有名称字段选择图标（使用不变的字段，避免切换语言时图标变化）
+                let iconClass = 'fas fa-box';
+                const allNames = [category.name, category.enName, category.swName].filter(n => n);
+                for (const [key, icon] of Object.entries(categoryIcons)) {
+                    if (allNames.some(name => name && name.includes(key))) {
+                        iconClass = icon;
+                        break;
+                    }
+                }
+                
+                card.innerHTML = `
+                    <div class="category-card" onclick="filterByCategory('${category.id}')">
+                        <div class="category-icon">
+                            <i class="${iconClass}"></i>
+                        </div>
+                        <h3>${categoryName}</h3>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 加载特色产品
+        function loadFeaturedProducts() {
+            const container = document.getElementById('featuredProducts');
+            container.innerHTML = '';
+            
+            allProducts.slice(0, 4).forEach(product => {
+                const card = createProductCard(product);
+                container.appendChild(card);
+            });
+        }
+
+        // 创建产品卡片
+        // 获取多语言产品名称
+        function getProductName(product) {
+            if (currentLanguage === 'zh') return product.name || product.enName;
+            if (currentLanguage === 'en') return product.enName || product.name;
+            if (currentLanguage === 'sw') return product.swName || product.enName || product.name;
+            return product.name;
+        }
+
+        // 获取多语言产品描述
+        function getProductDesc(product) {
+            if (currentLanguage === 'zh') return product.desc || product.enDesc;
+            if (currentLanguage === 'en') return product.enDesc || product.desc;
+            if (currentLanguage === 'sw') return product.swDesc || product.enDesc || product.desc;
+            return product.desc;
+        }
+
+        // 获取多语言分类名称
+        function getCategoryName(category) {
+            if (currentLanguage === 'zh') return category.name || category.enName;
+            if (currentLanguage === 'en') return category.enName || category.name;
+            if (currentLanguage === 'sw') return category.swName || category.enName || category.name;
+            return category.name;
+        }
+
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.setAttribute('role', 'button');
+            card.setAttribute('tabindex', '0');
+            card.style.cursor = 'pointer';
+            card.onclick = () => showProductDetail(product.id);
+            card.onkeydown = (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    showProductDetail(product.id);
+                }
+            };
+            const productName = getProductName(product);
+            const productImages = product.images || (product.imageUrl ? [product.imageUrl] : []);
+            const mainImageUrl = productImages.length > 0 ? productImages[0] : '/uploads/placeholder.png';
+            card.innerHTML = `
+                <div class="product-img">
+                    <img src="${mainImageUrl}" alt="${productName}" onerror="this.src='/uploads/placeholder.png'">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">${productName}</div>
+                    <button class="product-detail-btn" onclick="event.stopPropagation(); showProductDetail('${product.id}')" data-zh="查看详情" data-en="View Details" data-sw="Tazama Maelezo">View Details</button>
+                </div>
+            `;
+            // Apply language to newly created elements
+            card.querySelectorAll('[data-en]').forEach(el => {
+                let text;
+                if (currentLanguage === 'zh') {
+                    text = el.dataset.zh || el.dataset.en;
+                } else if (currentLanguage === 'en') {
+                    text = el.dataset.en;
+                } else if (currentLanguage === 'sw') {
+                    text = el.dataset.sw;
+                } else {
+                    text = el.dataset.en;
+                }
+                if (el.tagName === 'BUTTON') {
+                    el.textContent = text;
+                }
+            });
+            return card;
+        }
+
+        // 加载产品列表
+        async function loadProductsList() {
+            await loadAllProducts();
+            filteredProducts = allProducts.slice(); // 初始化为所有产品
+            currentPage = 1;
+            renderCategoryFilters();
+            setupCategoryListeners();
+            renderProductsList();
+        }
+
+        // 生成类别筛选复选框
+        function renderCategoryFilters() {
+            const container = document.getElementById('categoryFilters');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            allCategories.forEach(category => {
+                const checkboxDiv = document.createElement('div');
+                checkboxDiv.className = 'filter-checkbox';
+                checkboxDiv.innerHTML = `
+                    <input type="checkbox" id="cat-${category.id}" name="category" value="${category.id}">
+                    <label for="cat-${category.id}" style="margin: 0; cursor: pointer; font-size: 0.95rem; color: #666;">${getCategoryName(category)}</label>
+                `;
+                container.appendChild(checkboxDiv);
+            });
+        }
+
+        // 渲染产品列表
+        let currentPage = 1;
+        const itemsPerPage = 12;
+        let filteredProducts = [];
+
+        function renderProductsList() {
+            const grid = document.getElementById('productsGrid');
+            const noProducts = document.getElementById('noProducts');
+            
+            if (filteredProducts.length === 0) {
+                grid.innerHTML = '';
+                noProducts.style.display = 'block';
+                document.getElementById('paginationContainer').style.display = 'none';
+                return;
+            }
+
+            noProducts.style.display = 'none';
+            
+            // 计算分页
+            const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+            const startIdx = (currentPage - 1) * itemsPerPage;
+            const endIdx = startIdx + itemsPerPage;
+            const paginatedProducts = filteredProducts.slice(startIdx, endIdx);
+            
+            // 更新产品计数
+            document.getElementById('productCount').textContent = filteredProducts.length;
+            
+            // 渲染产品网格
+            grid.innerHTML = '';
+            paginatedProducts.forEach(product => {
+                grid.appendChild(createProductCard(product));
+            });
+            
+            // 渲染分页
+            renderPagination(totalPages);
+        }
+
+        // 渲染分页
+        function renderPagination(totalPages) {
+            const paginationContainer = document.getElementById('paginationContainer');
+            const paginationList = document.getElementById('paginationList');
+            
+            if (totalPages <= 1) {
+                paginationContainer.style.display = 'none';
+                return;
+            }
+            
+            paginationContainer.style.display = 'flex';
+            paginationList.innerHTML = '';
+            
+            // 上一页按钮
+            const prevItem = document.createElement('li');
+            prevItem.className = 'page-item' + (currentPage === 1 ? ' disabled' : '');
+            prevItem.innerHTML = `<a class="page-link" ${currentPage === 1 ? 'onclick="return false;"' : 'onclick="goToPage(' + (currentPage - 1) + ')"'} style="cursor: ${currentPage === 1 ? 'not-allowed' : 'pointer'};"><i class="fas fa-chevron-left"></i></a>`;
+            paginationList.appendChild(prevItem);
+            
+            // 页码按钮
+            for (let i = 1; i <= totalPages; i++) {
+                const pageItem = document.createElement('li');
+                pageItem.className = 'page-item' + (i === currentPage ? ' active' : '');
+                pageItem.innerHTML = `<a class="page-link" onclick="goToPage(${i})" style="cursor: pointer;">${i}</a>`;
+                paginationList.appendChild(pageItem);
+            }
+            
+            // 下一页按钮
+            const nextItem = document.createElement('li');
+            nextItem.className = 'page-item' + (currentPage === totalPages ? ' disabled' : '');
+            nextItem.innerHTML = `<a class="page-link" ${currentPage === totalPages ? 'onclick="return false;"' : 'onclick="goToPage(' + (currentPage + 1) + ')"'} style="cursor: ${currentPage === totalPages ? 'not-allowed' : 'pointer'};"><i class="fas fa-chevron-right"></i></a>`;
+            paginationList.appendChild(nextItem);
+        }
+
+        // 跳转到指定页
+        function goToPage(page) {
+            currentPage = page;
+            renderProductsList();
+            window.scrollTo({ top: 800, behavior: 'smooth' });
+        }
+
+        // 按分类筛选
+        async function filterByCategory(categoryId) {
+            // 切换到产品页并等待完整加载
+            history.pushState({ page: 'products' }, '', '#products');
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('products').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            updateLanguage();
+
+            await loadAllProducts();
+            filteredProducts = allProducts.slice();
+            currentPage = 1;
+            renderCategoryFilters();
+            setupCategoryListeners();
+
+            // 等待 DOM 更新后设置复选框
+            document.querySelectorAll('#categoryFilters input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = String(checkbox.value) === String(categoryId);
+            });
+            applyFilters();
+        }
+
+        // 应用筛选
+        function applyFilters() {
+            // 获取自动搜索输入（如果存在）
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+            
+            // 获取选中的分类（统一用字符串比较）
+            const selectedCategories = Array.from(document.querySelectorAll('#categoryFilters input[type="checkbox"]:checked')).map(cb => String(cb.value));
+            
+            // 获取价格范围
+            const priceMax = parseInt(document.getElementById('price-max').value);
+            
+            // 获取排序方式
+            const sortBy = document.getElementById('sort-select').value;
+            
+            let filtered = allProducts.slice();
+
+            // 搜索筛选
+            if (searchTerm) {
+                filtered = filtered.filter(p => 
+                    (p.name || '').toLowerCase().includes(searchTerm) ||
+                    (p.enName || '').toLowerCase().includes(searchTerm) ||
+                    (p.swName || '').toLowerCase().includes(searchTerm)
+                );
+            }
+
+            // 分类筛选（字符串匹配，兼容数字ID和字符串ID）
+            if (selectedCategories.length > 0) {
+                filtered = filtered.filter(p => selectedCategories.includes(String(p.categoryId)));
+            }
+
+            // 价格筛选
+            filtered = filtered.filter(p => p.price <= priceMax);
+
+            // 排序
+            if (sortBy === 'price-asc') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortBy === 'price-desc') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (sortBy === 'newest') {
+                filtered.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            }
+
+            filteredProducts = filtered;
+            currentPage = 1;
+            renderProductsList();
+        }
+
+        // 清除筛选
+        function clearFilters() {
+            // 清除所有复选框
+            document.querySelectorAll('#categoryFilters input[type="checkbox"]').forEach(cb => cb.checked = false);
+            
+            // 重置价格滑块
+            document.getElementById('price-max').value = 5000;
+            document.getElementById('price-value').textContent = '$5000';
+            
+            // 重置排序
+            document.getElementById('sort-select').value = 'newest';
+            
+            // 清除搜索框
+            if (document.getElementById('searchInput')) {
+                document.getElementById('searchInput').value = '';
+            }
+            
+            // 重新应用筛选（显示所有产品）
+            applyFilters();
+        }
+
+        // 视图切换（网格/列表）
+        function toggleView(btn, viewType) {
+            const viewBtns = document.querySelectorAll('.view-btn');
+            const productGrid = document.getElementById('productsGrid');
+            
+            viewBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            if (viewType === 'list') {
+                productGrid.style.gridTemplateColumns = '1fr';
+            } else {
+                productGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(250px, 1fr))';
+            }
+        }
+
+        // 价格滑块交互
+        function initPriceSlider() {
+            const priceSlider = document.getElementById('price-max');
+            const priceValue = document.getElementById('price-value');
+            
+            if (!priceSlider) return;
+            
+            priceSlider.addEventListener('input', function() {
+                priceValue.textContent = `$${this.value}`;
+            });
+        }
+
+        // 显示产品详情
+        async function showProductDetail(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            if (!product) return;
+
+            currentDetailProductId = productId;
+            history.pushState({ page: 'product-detail', productId: productId }, '', '#product-detail?id=' + productId);
+
+            const productName = getProductName(product);
+            const productDesc = getProductDesc(product);
+
+            document.getElementById('detailName').textContent = productName;
+            document.getElementById('detailEnName').textContent = product.enName || '';
+            // document.getElementById('detailPrice').textContent = `$${product.price.toFixed(2)}`;
+            document.getElementById('detailDesc').textContent = productDesc;
+            document.getElementById('detailId').textContent = product.id;
+
+            // 清除之前的自动轮播
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = null;
+            }
+
+            // 处理多张主图：兼容 images 数组和旧的 imageUrl
+            const productImages = product.images || (product.imageUrl ? [product.imageUrl] : []);
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = productImages.length > 0 ? productImages[0] : '/uploads/placeholder.png';
+            currentSlideIndex = 0;
+
+            // 生成缩略图
+            const thumbnailsContainer = document.getElementById('thumbnailsContainer');
+            thumbnailsContainer.innerHTML = '';
+            if (productImages.length > 1) {
+                productImages.forEach((imgUrl, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = imgUrl;
+                    thumb.alt = '';
+                    thumb.style.borderColor = index === 0 ? 'var(--accent-color)' : 'transparent';
+                    thumb.onclick = function() {
+                        currentSlideIndex = index;
+                        mainImage.src = imgUrl;
+                        thumbnailsContainer.querySelectorAll('img').forEach(t => t.style.borderColor = 'transparent');
+                        thumb.style.borderColor = 'var(--accent-color)';
+                        // 点击缩略图后重启自动轮播
+                        startAutoSlide(productImages, mainImage, thumbnailsContainer);
+                    };
+                    thumbnailsContainer.appendChild(thumb);
+                });
+
+                // 启动自动轮播（3秒切换一次）
+                startAutoSlide(productImages, mainImage, thumbnailsContainer);
+
+                // 鼠标悬停在主图上时暂停轮播
+                mainImage.onmouseenter = function() {
+                    if (autoSlideInterval) {
+                        clearInterval(autoSlideInterval);
+                        autoSlideInterval = null;
+                    }
+                };
+
+                // 鼠标离开主图时继续轮播
+                mainImage.onmouseleave = function() {
+                    startAutoSlide(productImages, mainImage, thumbnailsContainer);
+                };
+            }
+
+            // 设置分类
+            const category = allCategories.find(c => c.id === product.categoryId);
+            document.getElementById('detailCategory').textContent = category ? getCategoryName(category) : 'Unknown';
+
+            // 图文介绍
+            const introSection = document.getElementById('productIntroSection');
+            const introImagesGrid = document.getElementById('introImagesGrid');
+            const introTextContent = document.getElementById('introTextContent');
+            const hasIntroImages = product.introImages && product.introImages.length > 0;
+            const introText = currentLanguage === 'zh' ? (product.introText || product.introTextEn || '')
+                            : currentLanguage === 'sw' ? (product.introTextSw || product.introTextEn || '')
+                            : (product.introTextEn || product.introText || '');
+            if (hasIntroImages || introText) {
+                introSection.style.display = 'block';
+                introImagesGrid.innerHTML = '';
+                if (hasIntroImages) {
+                    product.introImages.forEach(url => {
+                        const img = document.createElement('img');
+                        img.src = url;
+                        img.alt = '';
+                        img.style.cssText = 'width: 100%; height: auto; display: block; margin: 0; padding: 0;';
+                        introImagesGrid.appendChild(img);
+                    });
+                }
+                introTextContent.textContent = introText;
+            } else {
+                introSection.style.display = 'none';
+            }
+
+            // 加载相关产品
+            const relatedContainer = document.getElementById('relatedProducts');
+            relatedContainer.innerHTML = '';
+            const related = allProducts
+                .filter(p => p.categoryId === product.categoryId && p.id !== product.id)
+                .slice(0, 4);
+            related.forEach(p => {
+                relatedContainer.appendChild(createProductCard(p));
+            });
+
+            _displayPage('product-detail');
+        }
+
+        // 启动自动轮播
+        function startAutoSlide(productImages, mainImage, thumbnailsContainer) {
+            // 清除之前的定时器
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+            }
+
+            // 只有多于1张图片时才自动轮播
+            if (productImages.length <= 1) return;
+
+            autoSlideInterval = setInterval(() => {
+                currentSlideIndex = (currentSlideIndex + 1) % productImages.length;
+                mainImage.src = productImages[currentSlideIndex];
+                
+                // 更新缩略图边框高亮
+                const thumbnails = thumbnailsContainer.querySelectorAll('img');
+                thumbnails.forEach((thumb, index) => {
+                    thumb.style.borderColor = index === currentSlideIndex ? 'var(--accent-color)' : 'transparent';
+                });
+            }, 3000); // 每3秒切换一次
+        }
+
+        // 加载页脚分类
+        function loadFooterCategories() {
+            const container = document.getElementById('footerCategories');
+            container.innerHTML = '';
+            allCategories.slice(0, 4).forEach(category => {
+                const li = document.createElement('li');
+                const categoryName = getCategoryName(category);
+                li.innerHTML = `<a href="#" onclick="filterByCategory('${category.id}'); return false;">${categoryName}</a>`;
+                container.appendChild(li);
+            });
+        }
+
+        // 联系表单提交
+        document.getElementById('contactFormEl')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const alert = document.getElementById('contactAlert');
+            
+            const formData = {
+                name: document.getElementById('contactName').value,
+                email: document.getElementById('contactEmail').value,
+                phone: document.getElementById('contactPhone').value,
+                message: document.getElementById('contactMessage').value
+            };
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/contacts`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    alert.className = 'alert alert-success show';
+                    alert.textContent = currentLanguage === 'zh' 
+                        ? '谢谢！您的消息已成功发送。' 
+                        : (currentLanguage === 'sw' 
+                            ? 'Asante! Ujumbe wako umetumwa kwa mafanikio.' 
+                            : 'Thank you! Your message has been sent successfully.');
+                    document.getElementById('contactFormEl').reset();
+                } else {
+                    alert.className = 'alert alert-error show';
+                    alert.textContent = data.message;
+                }
+            } catch (error) {
+                console.error('发送失败:', error);
+                alert.className = 'alert alert-error show';
+                alert.textContent = currentLanguage === 'zh' 
+                    ? '发送消息出错。请重试。' 
+                    : (currentLanguage === 'sw' 
+                        ? 'Hitilafu katika kutuma ujumbe. Tafadhali jaribu tena.' 
+                        : 'Error sending message. Please try again.');
+            }
+
+            setTimeout(() => alert.classList.remove('show'), 3000);
+        });
+
+        // 多语言支持
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            document.querySelectorAll('.lang-switch a').forEach(a => a.classList.remove('active'));
+            event.target.classList.add('active');
+            updateLanguage();
+            
+            // 每次切换语言都刷新页脚分类（所有页面可见）
+            loadFooterCategories();
+
+            // Refresh current page content for language-dependent data
+            const activePage = document.querySelector('.page.active');
+            if (activePage) {
+                const pageId = activePage.id;
+                if (pageId === 'home') {
+                    loadCategoriesGrid();
+                    loadFeaturedProducts();
+                } else if (pageId === 'products') {
+                    renderCategoryFilters();
+                    setupCategoryListeners();
+                    renderProductsList();
+                } else if (pageId === 'product-detail') {
+                    // 仅刷新内容，不写历史记录
+                    if (currentDetailProductId) {
+                        const product = allProducts.find(p => p.id === currentDetailProductId);
+                        if (product) {
+                            document.getElementById('detailName').textContent = getProductName(product);
+                            document.getElementById('detailEnName').textContent = product.enName || '';
+                            document.getElementById('detailDesc').textContent = getProductDesc(product);
+                            const category = allCategories.find(c => c.id === product.categoryId);
+                            document.getElementById('detailCategory').textContent = category ? getCategoryName(category) : 'Unknown';
+                            const relatedContainer = document.getElementById('relatedProducts');
+                            relatedContainer.innerHTML = '';
+                            allProducts.filter(p => p.categoryId === product.categoryId && p.id !== product.id).slice(0, 4).forEach(p => relatedContainer.appendChild(createProductCard(p)));
+                        }
+                    }
+                } else if (pageId === 'about') {
+                    loadCompanyDescription();
+                    loadTeamData();
+                } else if (pageId === 'contact') {
+                    loadContactInfo();
+                }
+            }
+        }
+
+        function updateLanguage() {
+            document.querySelectorAll('[data-en]').forEach(el => {
+                let text;
+                if (currentLanguage === 'zh') {
+                    // 中文使用原始 HTML 中已有的中文文本，或从 data-zh 获取
+                    text = el.dataset.zh || el.dataset.en;
+                } else if (currentLanguage === 'en') {
+                    text = el.dataset.en;
+                } else if (currentLanguage === 'sw') {
+                    text = el.dataset.sw;
+                } else {
+                    text = el.dataset.en;
+                }
+                
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = text;
+                } else if (el.tagName === 'BUTTON') {
+                    // For buttons, update the text content only (preserve inner HTML like icons)
+                    const innerHTML = el.innerHTML;
+                    const children = el.children;
+                    if (children.length > 0) {
+                        // Button has child elements (like icons), update text node
+                        const textNode = Array.from(el.childNodes).find(node => node.nodeType === 3);
+                        if (textNode) {
+                            textNode.textContent = ' ' + text;
+                        }
+                    } else {
+                        el.textContent = text;
+                    }
+                } else if (el.hasAttribute('data-is-html')) {
+                    // For elements marked as HTML content
+                    el.innerHTML = text;
+                } else {
+                    el.textContent = text;
+                }
+            });
+        }
+
+        // 页面搜索和筛选事件
+        // 为搜索框添加搜索功能
+        function setupSearchListener() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.removeEventListener('input', applyFilters);
+                searchInput.addEventListener('input', applyFilters);
+            }
+        }
+
+        // 为类别复选框添加事件监听器
+        function setupCategoryListeners() {
+            document.querySelectorAll('#categoryFilters input[type="checkbox"]').forEach(checkbox => {
+                checkbox.removeEventListener('change', applyFilters);
+                checkbox.addEventListener('change', applyFilters);
+            });
+        }
+
+        // 加载统计数据
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/stats`);
+                const data = await response.json();
+                if (data.success) {
+                    document.getElementById('statsProducts').textContent = data.data.totalProducts;
+                }
+            } catch (error) {
+                console.error('加载统计数据失败:', error);
+            }
+        }
+
+        // 团队成员数据
+        const teamMembers = [
+            {
+                name: { en: 'John Kamau', sw: 'John Kamau', zh: '约翰·卡瑙' },
+                role: { en: 'Founder & CEO', sw: 'Muzuri na Mwenyekiti wa Mkataba', zh: '创始人及首席执行官' },
+                desc: { en: '20+ years of experience in building materials industry', sw: 'Uzoefu wa miaka 20+ katika sekta ya bidhaa za ujenzi', zh: '在建筑材料行业拥有 20 年以上经验' },
+                image: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
+            },
+            {
+                name: { en: 'Fatima Hassan', sw: 'Fatima Hassan', zh: '法蒂玛·哈桑' },
+                role: { en: 'Operations Director', sw: 'Mkurugenzi wa Usindikaji', zh: '运营总监' },
+                desc: { en: 'Expert in supply chain management and logistics', sw: 'Mtaalamu katika usimamizi wa mzunguko wa usambazaji na usafirishaji', zh: '供应链管理和物流专家' },
+                image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
+            },
+            {
+                name: { en: 'David Ochieng', sw: 'David Ochieng', zh: '大卫·奥齐恩格' },
+                role: { en: 'Sales & Marketing Manager', sw: 'Meneja wa Mauzo na Uuzaji', zh: '销售和市场营销经理' },
+                desc: { en: '15 years of experience in East African markets', sw: 'Uzoefu wa miaka 15 katika masoko ya Afrika Mashariki', zh: '在东非市场拥有 15 年经验' },
+                image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
+            },
+            {
+                name: { en: 'Grace Mwangi', sw: 'Grace Mwangi', zh: '格蕾丝·姆望吉' },
+                role: { en: 'Product Quality Controller', sw: 'Mwendesha Ubora wa Bidhaa', zh: '产品质量控制员' },
+                desc: { en: 'Certified quality assurance specialist', sw: 'Mtaalamu wa uhakiki wa ubora wa kitambulisho', zh: '认证质量保证专家' },
+                image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
+            }
+        ];
+
+        // 公司介绍文本
+        const companyDescriptions = {
+            en: [
+                'CHEERFUL Africa is a leading supplier of premium building materials and home solutions in East Africa. Established in 2010, we are headquartered in Nairobi, Kenya with a regional office in Dar es Salaam, Tanzania.',
+                'We are committed to providing high-quality, durable and innovative building products to both commercial and residential customers across the region. Our product range includes porcelain tiles, sanitary ware, lighting fixtures, paints & coatings, and hardware supplies. With over 13 years of industry experience, we have built a reputation for excellence in product quality, competitive pricing, and exceptional customer service.'
+            ],
+            sw: [
+                'CHEERFUL Africa ni mtoa mwenye uwezo wa bidhaa za ujenzi za kiwango cha juu na masolutions ya nyumbani huko Afrika Mashariki, iliyoundwa mnamo 2010 na headquarters huko Nairobi, Kenya na ofisi ya mkoa huko Dar es Salaam, Tanzania.',
+                'Tunajitolea kutoa bidhaa za ujenzi za ubora, yenye uaminifu na vya ubunifu kwa wateja wa biashara na makazi kuzunguka mkoa. Mwendelezo wetu wa bidhaa una mabati ya porcelain, vifaa vya maji, vifaa vya mwangaza, maua na mafuta, na usambazaji wa samani. Na uzoefu wa miaka 13 za kiuchumi, tumejenga sifa ya ubora.'
+            ],
+            zh: [
+                'CHEERFUL Africa 是东非优质建筑材料和家居解决方案的领先供应商。成立于 2010 年，总部位于肯尼亚内罗毕，在坦桑尼亚达累斯萨拉姆设有区域办事处。',
+                '我们致力于为整个地区的商业和住宅客户提供高质量、耐用和创新的建筑产品。我们的产品范围包括瓷砖、卫浴用品、照明灯具、油漆和涂料以及硬件供应。凭借 13 年以上的行业经验，我们建立了产品质量、具有竞争力的价格和卓越客户服务的声誉。'
+            ]
+        };
+
+        // 加载团队数据
+        async function loadTeamData() {
+            const teamGrid = document.getElementById('teamGrid');
+            if (!teamGrid) return;
+
+            try {
+                // 尝试从API加载
+                const response = await fetch(`${API_BASE_URL}/team-members`);
+                const data = await response.json();
+                
+                if (data.success && data.data && data.data.length > 0) {
+                    teamGrid.innerHTML = '';
+                    data.data.forEach(member => {
+                        const memberName = member[`name`] || member[`enName`] || member.name?.en || '';
+                        const memberRole = member[`role`] || member[`enRole`] || member.role?.en || '';
+                        const memberDesc = member[`desc`] || member[`enDesc`] || member.desc?.en || '';
+                        const memberImage = member.image || 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80';
+
+                        // 获取对应语言的文本
+                        let name = memberName;
+                        let role = memberRole;
+                        let desc = memberDesc;
+
+                        if (currentLanguage === 'zh') {
+                            name = member.name || memberName;
+                            role = member.role || memberRole;
+                            desc = member.desc || memberDesc;
+                        } else if (currentLanguage === 'sw') {
+                            name = member.swName || memberName;
+                            role = member.swRole || memberRole;
+                            desc = member.swDesc || memberDesc;
+                        } else {
+                            name = member.enName || memberName;
+                            role = member.enRole || memberRole;
+                            desc = member.enDesc || memberDesc;
+                        }
+
+                        const memberEl = document.createElement('div');
+                        memberEl.className = 'team-member';
+                        memberEl.innerHTML = `
+                            <div class="member-img">
+                                <img src="${memberImage}" alt="${name}" onerror="this.src='/uploads/placeholder.png'">
+                            </div>
+                            <h3 class="member-name">${name}</h3>
+                            <div class="member-role">${role}</div>
+                            <p class="member-desc">${desc}</p>
+                        `;
+                        teamGrid.appendChild(memberEl);
+                    });
+                    return; // 成功加载，返回
+                }
+            } catch (error) {
+                console.warn('从API加载团队数据失败，使用静态数据:', error);
+            }
+
+            // 备用方案：使用静态数据
+            teamGrid.innerHTML = '';
+            teamMembers.forEach(member => {
+                const memberName = member.name[currentLanguage] || member.name.en;
+                const memberRole = member.role[currentLanguage] || member.role.en;
+                const memberDesc = member.desc[currentLanguage] || member.desc.en;
+
+                const memberEl = document.createElement('div');
+                memberEl.className = 'team-member';
+                memberEl.innerHTML = `
+                    <div class="member-img">
+                        <img src="${member.image}" alt="${memberName}" onerror="this.src='/uploads/placeholder.png'">
+                    </div>
+                    <h3 class="member-name">${memberName}</h3>
+                    <div class="member-role">${memberRole}</div>
+                    <p class="member-desc">${memberDesc}</p>
+                `;
+                teamGrid.appendChild(memberEl);
+            });
+        }
+
+        // 加载公司描述
+        async function loadCompanyDescription() {
+            const desc1 = document.getElementById('companyDesc1');
+            const desc2 = document.getElementById('companyDesc2');
+            if (!desc1 || !desc2) return;
+
+            try {
+                // 尝试从API加载
+                const response = await fetch(`${API_BASE_URL}/company-info`);
+                const data = await response.json();
+                
+                if (data.success && data.data) {
+                    const info = data.data;
+                    const lang = currentLanguage === 'zh' ? 'zh' : (currentLanguage === 'sw' ? 'sw' : 'en');
+                    
+                    desc1.textContent = info[`desc1_${lang}`] || info[`desc1_en`] || '';
+                    desc2.textContent = info[`desc2_${lang}`] || info[`desc2_en`] || '';
+                    return; // 成功加载，返回
+                }
+            } catch (error) {
+                console.warn('从API加载公司信息失败，使用静态数据:', error);
+            }
+
+            // 备用方案：使用静态数据
+            const lang = currentLanguage === 'zh' ? 'zh' : (currentLanguage === 'sw' ? 'sw' : 'en');
+            const descriptions = companyDescriptions[lang] || companyDescriptions.en;
+            desc1.textContent = descriptions[0];
+            desc2.textContent = descriptions[1];
+        }
+
+        // 联系信息数据
+        const contactOffices = [
+            {
+                titleKey: 'East Africa Office',
+                locations: [
+                    {
+                        city: { en: 'Nairobi (Kenya)', sw: 'Nairobi (Kenya)', zh: '内罗毕(肯尼亚)' },
+                        address: { en: '123 Moi Avenue, 4th Floor, Nairobi CBD', sw: '123 Moi Avenue, Etaji la 4, Nairobi CBD', zh: '123 Moi Avenue, 4楼, Nairobi CBD' }
+                    },
+                    {
+                        city: { en: 'Dar es Salaam (Tanzania)', sw: 'Dar es Salaam (Tanzania)', zh: '达累斯萨拉姆(坦桑尼亚)' },
+                        address: { en: '456 Sam Nujoma Road, Mikocheni, Dar es Salaam', sw: '456 Barabara ya Sam Nujoma, Mikocheni, Dar es Salaam', zh: '456 Sam Nujoma Road, Mikocheni, Dar es Salaam' }
+                    }
+                ],
+                phone: '+254 712 345 678 (Kenya) | +255 789 012 345 (Tanzania)',
+                email: 'info@cheerful-africa.com'
+            },
+            {
+                titleKey: 'China Headquarters',
+                locations: [
+                    {
+                        city: { en: 'Foshan', sw: 'Foshan', zh: '佛山' },
+                        address: { en: 'No. 88, Building Material Avenue, Foshan City, Guangdong Province', sw: 'Namba 88, Barabara ya Bidhaa za Ujenzi, Jiji la Foshan, Wilaya ya Guangdong', zh: '广东省佛山市建筑材料路88号' }
+                    }
+                ],
+                phone: '+86 757 8888 9999',
+                email: 'export@cheerful.com.cn'
+            }
+        ];
+
+        // 加载联系信息
+        function loadContactInfo() {
+            const container = document.getElementById('contactInfoContainer');
+            if (!container) return;
+
+            container.innerHTML = '';
+            contactOffices.forEach(office => {
+                const card = document.createElement('div');
+                card.className = 'contact-info-card';
+                
+                // 标题
+                const titleText = office.titleKey === 'East Africa Office' 
+                    ? (currentLanguage === 'zh' ? '东非办事处' : (currentLanguage === 'sw' ? 'Ofisi ya Afrika Mashariki' : 'East Africa Office'))
+                    : (currentLanguage === 'zh' ? '中国总部' : (currentLanguage === 'sw' ? 'Ofisi Kuu ya China' : 'China Headquarters'));
+                
+                const titleEl = document.createElement('h3');
+                titleEl.textContent = titleText;
+                card.appendChild(titleEl);
+
+                // 地址
+                office.locations.forEach(location => {
+                    const detailEl = document.createElement('div');
+                    detailEl.className = 'contact-detail';
+                    const city = location.city[currentLanguage] || location.city.en;
+                    const address = location.address[currentLanguage] || location.address.en;
+                    detailEl.innerHTML = `
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p><strong>${city}:</strong><br>${address}</p>
+                    `;
+                    card.appendChild(detailEl);
+                });
+
+                // 电话
+                const phoneEl = document.createElement('div');
+                phoneEl.className = 'contact-detail';
+                const phoneLabel = currentLanguage === 'zh' ? '电话' : (currentLanguage === 'sw' ? 'Simu' : 'Phone');
+                phoneEl.innerHTML = `
+                    <i class="fas fa-phone"></i>
+                    <p><strong>${phoneLabel}:</strong><br>${office.phone}</p>
+                `;
+                card.appendChild(phoneEl);
+
+                // 邮箱
+                const emailEl = document.createElement('div');
+                emailEl.className = 'contact-detail';
+                const emailLabel = currentLanguage === 'zh' ? '邮箱' : (currentLanguage === 'sw' ? 'Barua Pepe' : 'Email');
+                emailEl.innerHTML = `
+                    <i class="fas fa-envelope"></i>
+                    <p><strong>${emailLabel}:</strong><br><a href="mailto:${office.email}">${office.email}</a></p>
+                `;
+                card.appendChild(emailEl);
+
+                container.appendChild(card);
+            });
+        }
+
+        // 浏览器后退/前进监听
+        window.addEventListener('popstate', (e) => {
+            const state = e.state;
+            if (!state) {
+                _displayPage('home');
+                return;
+            }
+            if (state.page === 'product-detail' && state.productId) {
+                // 显示产品详情但不再写历史
+                currentDetailProductId = state.productId;
+                const product = allProducts.find(p => p.id === state.productId);
+                if (product) {
+                    const productName = getProductName(product);
+                    const productDesc = getProductDesc(product);
+                    document.getElementById('detailName').textContent = productName;
+                    document.getElementById('detailEnName').textContent = product.enName || '';
+                    // document.getElementById('detailPrice').textContent = `$${product.price.toFixed(2)}`;
+                    document.getElementById('detailDesc').textContent = productDesc;
+                    document.getElementById('detailId').textContent = product.id;
+                    
+                    // 清除之前的自动轮播
+                    if (autoSlideInterval) {
+                        clearInterval(autoSlideInterval);
+                        autoSlideInterval = null;
+                    }
+                    
+                    // 处理多张主图
+                    const productImages = product.images || (product.imageUrl ? [product.imageUrl] : []);
+                    const mainImage = document.getElementById('mainImage');
+                    mainImage.src = productImages.length > 0 ? productImages[0] : '/uploads/placeholder.png';
+                    currentSlideIndex = 0;
+                    
+                    const thumbnailsContainer = document.getElementById('thumbnailsContainer');
+                    thumbnailsContainer.innerHTML = '';
+                    if (productImages.length > 1) {
+                        productImages.forEach((imgUrl, index) => {
+                            const thumb = document.createElement('img');
+                            thumb.src = imgUrl;
+                            thumb.alt = '';
+                            thumb.style.borderColor = index === 0 ? 'var(--accent-color)' : 'transparent';
+                            thumb.onclick = function() {
+                                currentSlideIndex = index;
+                                mainImage.src = imgUrl;
+                                thumbnailsContainer.querySelectorAll('img').forEach(t => t.style.borderColor = 'transparent');
+                                thumb.style.borderColor = 'var(--accent-color)';
+                                // 点击缩略图后重启自动轮播
+                                startAutoSlide(productImages, mainImage, thumbnailsContainer);
+                            };
+                            thumbnailsContainer.appendChild(thumb);
+                        });
+                        
+                        // 启动自动轮播
+                        startAutoSlide(productImages, mainImage, thumbnailsContainer);
+                        
+                        // 鼠标悬停暂停
+                        mainImage.onmouseenter = function() {
+                            if (autoSlideInterval) {
+                                clearInterval(autoSlideInterval);
+                                autoSlideInterval = null;
+                            }
+                        };
+                        
+                        // 鼠标离开继续
+                        mainImage.onmouseleave = function() {
+                            startAutoSlide(productImages, mainImage, thumbnailsContainer);
+                        };
+                    }
+                    
+                    const category = allCategories.find(c => c.id === product.categoryId);
+                    document.getElementById('detailCategory').textContent = category ? getCategoryName(category) : 'Unknown';
+                    const relatedContainer = document.getElementById('relatedProducts');
+                    relatedContainer.innerHTML = '';
+                    allProducts.filter(p => p.categoryId === product.categoryId && p.id !== product.id).slice(0, 4).forEach(p => relatedContainer.appendChild(createProductCard(p)));
+                }
+                _displayPage('product-detail');
+            } else {
+                _displayPage(state.page || 'home');
+            }
+        });
+
+        // 初始化
+        async function init() {
+            await loadCategories();
+            await loadAllProducts();
+
+            await loadStats();
+            loadFooterCategories();
+            loadCompanyDescription();
+            loadTeamData();
+            loadContactInfo();
+            renderCategoryFilters();
+            setupCategoryListeners();
+            initPriceSlider();
+            setupSearchListener();
+
+            // 根据 URL hash 恢复页面（支持刷新和直接链接）
+            const hash = location.hash.replace('#', '') || 'home';
+            
+            // 解析产品详情页的产品ID
+            if (hash.startsWith('product-detail')) {
+                const urlParams = new URLSearchParams(hash.split('?')[1]);
+                const productId = urlParams.get('id');
+                if (productId) {
+                    const product = allProducts.find(p => p.id === productId);
+                    if (product) {
+                        history.replaceState({ page: 'product-detail', productId: productId }, '', '#product-detail?id=' + productId);
+                        showProductDetail(productId);
+                        updateLanguage();
+                        return;
+                    }
+                }
+                // 如果没有找到产品ID或产品不存在，回到首页
+                history.replaceState({ page: 'home' }, '', '#home');
+                _displayPage('home');
+                updateLanguage();
+                return;
+            }
+            
+            const validPages = ['home', 'products', 'about', 'contact'];
+            const initialPage = validPages.includes(hash) ? hash : 'home';
+            // 替换初始历史记录
+            history.replaceState({ page: initialPage }, '', '#' + initialPage);
+            _displayPage(initialPage);
+            updateLanguage();
+        }
+
+        init();
+    </script>
+</body>
+</html>
